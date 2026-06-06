@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bipolaridade ou TDAH? — Webinar Gratuito para Médicos | PsiqExpert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ==========================================
+   RESET & BASE
+   ========================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Lato', sans-serif;
+  /* Fundo fixo em toda a página — as ondas douradas aparecem em todo o scroll */
+  background: url('bg.webp') center / cover fixed no-repeat;
+  background-color: #050c19;
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   DESIGN TOKENS
+   ========================================== */
+:root {
+  --navy-900: #050c19;
+  --navy-800: #080f1e;
+  --navy-700: #0d1b35;
+  --navy-600: #1a2847;
+  --navy-500: #243560;
+  --gold:        #c9a227;
+  --gold-light:  #d4af37;
+  --gold-bright: #f0c040;
+  --muted:  #7a93b8;
+  --text:   #b0c6e0;
+  --white:  #ffffff;
+  --max-w: 1140px;
+}
+
+/* ==========================================
+   KEYFRAMES
+   ========================================== */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulseDot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%     { transform: scale(1.5); opacity: .6; }
+}
+@keyframes goldPulse {
+  0%,100% { box-shadow: 0 0 18px rgba(201,162,39,.25), 0 0 0 10px rgba(201,162,39,.06); }
+  50%     { box-shadow: 0 0 36px rgba(201,162,39,.50), 0 0 0 10px rgba(201,162,39,.10); }
+}
+@keyframes gradShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   SCROLL REVEAL
+   ========================================== */
+[data-r] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+[data-r].vis { opacity: 1; transform: translateY(0); }
+[data-r][data-d="1"] { transition-delay: .1s; }
+[data-r][data-d="2"] { transition-delay: .2s; }
+[data-r][data-d="3"] { transition-delay: .3s; }
+[data-r][data-d="4"] { transition-delay: .4s; }
+[data-r][data-d="5"] { transition-delay: .5s; }
+[data-r][data-d="6"] { transition-delay: .6s; }
+
+/* ==========================================
+   ATTENTION BAR
+   ========================================== */
+.attn-bar {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(90deg, #8b6010, #d4af37, #c9a227, #d4af37, #8b6010);
+  background-size: 400% auto;
+  animation: gradShift 6s linear infinite;
+  position: relative;
+  z-index: 100;
+}
+.attn-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 22s linear infinite;
+}
+.attn-inner:hover { animation-play-state: paused; }
+.attn-text {
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #050c19;
+  padding: 0 48px;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   HERO
+   ========================================== */
+.hero {
+  position: relative;
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px clamp(20px,5vw,64px) 80px;
+}
+
+/* Overlay leve — texto legível mas fundo bem visível */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(5,12,25,.62) 0%,
+    rgba(8,15,30,.50) 45%,
+    rgba(5,12,25,.68) 100%
+  );
+}
+
+.hero-split-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 58%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(201,162,39,.15) 20%,
+    rgba(201,162,39,.40) 50%,
+    rgba(201,162,39,.15) 80%,
+    transparent 100%);
+  z-index: 0;
+  display: none;
+}
+@media(min-width:1024px) { .hero-split-line { display: block; } }
+
+.hero-dots span {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  z-index: 0;
+  animation: fadeIn 2s ease both;
+}
+.hero-dots span:nth-child(1) { width:3px;height:3px; top:18%;left:8%;  opacity:.25; animation-delay:.4s;  }
+.hero-dots span:nth-child(2) { width:2px;height:2px; top:65%;left:15%; opacity:.18; animation-delay:.9s;  }
+.hero-dots span:nth-child(3) { width:4px;height:4px; top:30%;left:50%; opacity:.15; animation-delay:1.3s; }
+.hero-dots span:nth-child(4) { width:2px;height:2px; top:80%;left:62%; opacity:.12; animation-delay:.2s;  }
+.hero-dots span:nth-child(5) { width:3px;height:3px; top:12%;left:85%; opacity:.20; animation-delay:1.7s; }
+
+.hero-bottom-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,.45), transparent);
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Logo header ─────────────────────────────
+   mix-blend-mode: screen faz a margem escura do logo.webp
+   sumir contra o fundo escuro, deixando só o escudo dourado */
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 52px;
+  animation: fadeIn .9s ease .1s both;
+}
+.logo-full-img {
+  height: 84px;
+  width: auto;
+  display: block;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 18px rgba(201,162,39,.50));
+}
+.logo-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: var(--gold);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.logo-sub-text {
+  font-size: .58rem;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 7px;
+}
+
+/* ── Hero grid ───────────────────────────────
+   Mobile: coluna única  |  Desktop: conteúdo + (banner + form) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media(min-width:1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr 400px;
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+/* ── Banner webinar (lado direito) ───────────
+   Bordas suaves via CSS mask-image (vinheta radial) */
+
+/* Live tag */
+.live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(201,162,39,.10);
+  border: 1px solid rgba(201,162,39,.30);
+  border-radius: 50px;
+  padding: 7px 20px;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: fadeUp .8s ease .2s both;
+}
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+.hero-eyebrow {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  animation: fadeUp .8s ease .3s both;
+}
+
+.hero-headline {
+  line-height: .92;
+  margin-bottom: 22px;
+  animation: fadeUp .8s ease .4s both;
+}
+.hl-bipo {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem,7.5vw,5.8rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -.01em;
+}
+.hl-ou {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem,3vw,2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: .08em;
+  margin: 4px 0;
+}
+.hl-tdah {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem,9vw,7rem);
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: -.02em;
+}
+.hl-q { color: rgba(201,162,39,.35); }
+
+.hero-subtitle {
+  font-size: clamp(.95rem,2vw,1.1rem);
+  color: var(--text);
+  line-height: 1.78;
+  font-style: italic;
+  margin-bottom: 36px;
+  max-width: 520px;
+  animation: fadeUp .8s ease .5s both;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  animation: fadeUp .8s ease .6s both;
+}
+.ev-badge {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(201,162,39,.18);
+  border-radius: 10px;
+  padding: 12px 18px;
+  transition: border-color .25s;
+}
+.ev-badge:hover { border-color: rgba(201,162,39,.45); }
+.ev-icon { font-size: 1.2rem; line-height: 1; }
+.ev-info strong { display: block; font-size: .93rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.ev-info small  { font-size: .68rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ==========================================
+   FORM CARD
+   ========================================== */
+.form-wrap { animation: fadeUp .8s ease .7s both; }
+
+.form-card {
+  background: rgba(5,12,25,.55);
+  border: 1px solid rgba(201,162,39,.22);
+  border-radius: 20px;
+  padding: 38px 32px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(201,162,39,.06) inset,
+    0 24px 64px rgba(0,0,0,.5);
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,.8), transparent);
+}
+.form-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,.2), transparent);
+}
+
+.form-top {
+  text-align: center;
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.form-pretitle {
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.form-fields { display: flex; flex-direction: column; gap: 13px; }
+
+.field label {
+  display: block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.field input {
+  width: 100%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,162,39,.15);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: .93rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--white);
+  outline: none;
+  transition: border-color .25s, box-shadow .25s, background .25s;
+}
+.field input:focus {
+  border-color: rgba(201,162,39,.6);
+  background: rgba(201,162,39,.06);
+  box-shadow: 0 0 0 3px rgba(201,162,39,.10);
+}
+.field input::placeholder { color: rgba(255,255,255,.18); }
+
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #050c19;
+  border: none;
+  border-radius: 10px;
+  padding: 17px 24px;
+  font-family: 'Lato', sans-serif;
+  font-size: .95rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  margin-top: 4px;
+}
+.btn-submit:hover  { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,162,39,.45); }
+.btn-submit:active { transform: translateY(0); }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.form-note {
+  text-align: center;
+  margin-top: 13px;
+  font-size: .72rem;
+  color: var(--muted);
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 12px 0 6px;
+}
+.success-ico   { font-size: 3rem; display: block; margin-bottom: 14px; }
+.success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.success-text { font-size: .92rem; color: var(--text); line-height: 1.7; }
+
+/* ==========================================
+   SECTION BASE
+   ========================================== */
+.section {
+  position: relative;
+  padding: clamp(64px,9vw,100px) clamp(20px,5vw,64px);
+}
+.sec-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.gold-rule {
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,.30), transparent);
+}
+.sec-eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem,4vw,2.8rem);
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.sec-sub {
+  font-size: .93rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 52px;
+  line-height: 1.65;
+}
+
+/* ==========================================
+   PARA QUEM É
+   ========================================== */
+.sec-paraquem { background: rgba(8,15,30,.82); backdrop-filter: blur(2px); }
+
+.pq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+@media(min-width:768px) {
+  .pq-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+
+.pq-card { border-radius: 18px; padding: 34px 28px; }
+.pq-yes {
+  background: rgba(201,162,39,.05);
+  border: 1px solid rgba(201,162,39,.22);
+}
+.pq-no {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.pq-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.pq-head-icon { font-size: 1.4rem; }
+.pq-head-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.pq-yes .pq-head-title { color: var(--gold); }
+.pq-no  .pq-head-title { color: var(--muted); }
+
+.pq-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.pq-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: .91rem;
+  color: #c0d4ea;
+  line-height: 1.55;
+}
+.pq-marker {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .65rem;
+  font-weight: 900;
+  margin-top: 1px;
+}
+.pq-yes .pq-marker {
+  background: rgba(201,162,39,.18);
+  color: var(--gold);
+  border: 1px solid rgba(201,162,39,.28);
+}
+.pq-no .pq-marker {
+  background: rgba(255,255,255,.05);
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* ==========================================
+   O QUE VAI APRENDER
+   ========================================== */
+.sec-aprender { background: rgba(5,12,25,.75); backdrop-filter: blur(1px); }
+.sec-aprender::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,162,39,.04) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+.sec-aprender .sec-inner { position: relative; z-index: 1; }
+
+.learn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media(min-width:640px)  { .learn-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px) { .learn-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.learn-card {
+  background: rgba(13,27,53,.6);
+  border: 1px solid rgba(201,162,39,.10);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  cursor: default;
+  box-shadow: 0 4px 24px rgba(0,0,0,.25);
+}
+.learn-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.learn-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201,162,39,.32);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(201,162,39,.08);
+}
+.learn-card:hover::before { opacity: 1; }
+
+.card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: rgba(201,162,39,.12);
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: -.02em;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.card-desc {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ==========================================
+   BIO
+   ========================================== */
+.sec-bio { background: rgba(8,15,30,.80); backdrop-filter: blur(2px); }
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media(min-width:768px) {
+  .bio-grid { grid-template-columns: 260px 1fr; gap: 64px; }
+}
+
+.bio-photo-area {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.bio-ring-outer {
+  position: absolute;
+  inset: -32px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,162,39,.08);
+}
+.bio-ring-mid {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,162,39,.13);
+}
+.bio-circle {
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 10px rgba(201,162,39,.07), 0 24px 60px rgba(0,0,0,.6);
+  animation: goldPulse 3s ease-in-out infinite;
+}
+.bio-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.bio-initials {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--navy-500), var(--navy-600));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.bio-eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.bio-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem,3.5vw,2.5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 22px;
+}
+.bio-text {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.88;
+  margin-bottom: 34px;
+}
+.btn-bio {
+  display: inline-block;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #050c19;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 36px;
+  font-family: 'Lato', sans-serif;
+  font-size: .93rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-bio:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,162,39,.45); }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  background: rgba(5,12,25,.88);
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(201,162,39,.18);
+  text-align: center;
+  padding: 40px 20px;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .06em;
+  display: block;
+  margin-bottom: 6px;
+}
+.footer-tag {
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.footer-copy { font-size: .7rem; color: rgba(122,147,184,.45); }
+
+</style>
+</head>
+<body>
+
+<!-- ============================
+     BARRA DE ATENÇÃO
+     ============================ -->
+<div class="attn-bar" role="marquee" aria-live="off">
+  <div class="attn-inner">
+    <span class="attn-text">🚨 VAGAS LIMITADAS &nbsp;·&nbsp; WEBINAR GRATUITO &nbsp;·&nbsp; EXCLUSIVO PARA MÉDICOS &nbsp;·&nbsp; 16 DE JUNHO DE 2026 &nbsp;·&nbsp; 20H &nbsp;·&nbsp; INSCREVA-SE AGORA &nbsp;·&nbsp;</span>
+    <span class="attn-text">🚨 VAGAS LIMITADAS &nbsp;·&nbsp; WEBINAR GRATUITO &nbsp;·&nbsp; EXCLUSIVO PARA MÉDICOS &nbsp;·&nbsp; 16 DE JUNHO DE 2026 &nbsp;·&nbsp; 20H &nbsp;·&nbsp; INSCREVA-SE AGORA &nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<!-- ============================
+     HERO
+     ============================ -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-split-line"></div>
+  <div class="hero-dots">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-bottom-line"></div>
+
+  <div class="hero-container">
+
+    <!-- Logo -->
+    <div class="logo-row">
+      <img src="logo.webp" alt="PsiqExpert" class="logo-full-img">
+      <div class="logo-text-block">
+        <span class="logo-name">PsiqExpert</span>
+        <span class="logo-sub-text">Mentoria Premium em Psiquiatria</span>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+
+      <!-- ESQUERDA: Conteúdo -->
+      <div>
+        <div class="live-tag">
+          <span class="live-dot"></span>
+          Webinar ao Vivo
+        </div>
+
+        <p class="hero-eyebrow">Exclusivo para Médicos</p>
+
+        <h1 class="hero-headline">
+          <span class="hl-bipo">Bipolaridade</span>
+          <span class="hl-ou">ou</span>
+          <span class="hl-tdah">TDAH<span class="hl-q">?</span></span>
+        </h1>
+
+        <p class="hero-subtitle">
+          O diagnóstico que muda completamente o tratamento.
+        </p>
+
+        <div class="hero-badges">
+          <div class="ev-badge">
+            <span class="ev-icon">📅</span>
+            <div class="ev-info">
+              <strong>16 de junho de 2026</strong>
+              <small>Terça-feira</small>
+            </div>
+          </div>
+          <div class="ev-badge">
+            <span class="ev-icon">🕗</span>
+            <div class="ev-info">
+              <strong>20h</strong>
+              <small>Horário de Brasília</small>
+            </div>
+          </div>
+          <div class="ev-badge">
+            <span class="ev-icon">💻</span>
+            <div class="ev-info">
+              <strong>Online</strong>
+              <small>e Gratuito</small>
+            </div>
+          </div>
+          <div class="ev-badge">
+            <span class="ev-icon">👨‍⚕️</span>
+            <div class="ev-info">
+              <strong>Médicos</strong>
+              <small>Exclusivo</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIREITA: Formulário -->
+      <div class="form-wrap" id="formulario">
+        <div class="form-card">
+          <div class="form-top">
+            <p class="form-pretitle">Vagas limitadas</p>
+            <h2 class="form-title">Garanta sua vaga gratuita agora</h2>
+          </div>
+
+          <form id="webinar-form">
+            <div class="form-fields">
+              <div class="field">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome"
+                       placeholder="Dr. João Silva" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email"
+                       placeholder="joao@email.com" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp"
+                       placeholder="(11) 99999-9999" required autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="crm">CRM</label>
+                <input type="text" id="crm" name="crm"
+                       placeholder="Ex: CRM-SP 000000" required>
+              </div>
+              <button type="submit" class="btn-submit" id="btn-submit">
+                Inscrever-se Gratuitamente
+              </button>
+            </div>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <span class="success-ico">✅</span>
+            <h3 class="success-title">Sua vaga está garantida!</h3>
+            <p class="success-text">
+              Fique de olho no seu WhatsApp — enviaremos o link de acesso próximo à data do evento.
+            </p>
+          </div>
+
+          <p class="form-note">🔒 Seus dados estão protegidos. Sem spam.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================
+     PARA QUEM É
+     ============================ -->
+<section class="section sec-paraquem">
+  <div class="gold-rule"></div>
+  <div class="sec-inner">
+
+    <p class="sec-eyebrow" data-r>Esta aula é para você?</p>
+    <h2 class="sec-title" data-r data-d="1">
+      Descubra se este webinar<br>foi feito para você
+    </h2>
+    <p class="sec-sub" data-r data-d="2">
+      Aula prática e baseada em evidências, exclusiva para médicos que já atendem pacientes e querem mais segurança nas decisões clínicas.
+    </p>
+
+    <div class="pq-grid">
+      <div class="pq-card pq-yes" data-r data-d="2">
+        <div class="pq-head">
+          <span class="pq-head-icon">✅</span>
+          <h3 class="pq-head-title">Para quem É esta aula</h3>
+        </div>
+        <ul class="pq-list">
+          <li><span class="pq-marker">→</span><span>Médicos generalistas e de família que atendem casos de saúde mental</span></li>
+          <li><span class="pq-marker">→</span><span>Pós-graduandos em Psiquiatria em formação clínica</span></li>
+          <li><span class="pq-marker">→</span><span>Psiquiatras em início de carreira buscando segurança diagnóstica</span></li>
+          <li><span class="pq-marker">→</span><span>Médicos que já se questionaram entre TDAH e bipolaridade na consulta</span></li>
+          <li><span class="pq-marker">→</span><span>Profissionais que atendem pacientes com demandas de saúde mental</span></li>
+        </ul>
+      </div>
+
+      <div class="pq-card pq-no" data-r data-d="3">
+        <div class="pq-head">
+          <span class="pq-head-icon">❌</span>
+          <h3 class="pq-head-title">Para quem NÃO É esta aula</h3>
+        </div>
+        <ul class="pq-list">
+          <li><span class="pq-marker">×</span><span>Estudantes de medicina ainda na graduação</span></li>
+          <li><span class="pq-marker">×</span><span>Psicólogos, terapeutas e profissionais não-médicos</span></li>
+          <li><span class="pq-marker">×</span><span>Pacientes ou familiares em busca de autodiagnóstico</span></li>
+          <li><span class="pq-marker">×</span><span>Psiquiatras seniores com ampla experiência no diagnóstico diferencial</span></li>
+          <li><span class="pq-marker">×</span><span>Quem busca conteúdo puramente teórico sem aplicação clínica imediata</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================
+     O QUE VAI APRENDER
+     ============================ -->
+<section class="section sec-aprender">
+  <div class="gold-rule"></div>
+  <div class="sec-inner">
+
+    <p class="sec-eyebrow" data-r>Conteúdo programático</p>
+    <h2 class="sec-title" data-r data-d="1">O que você vai aprender</h2>
+    <p class="sec-sub" data-r data-d="2">
+      Conteúdo baseado em evidências com aplicação imediata na prática clínica.
+    </p>
+
+    <div class="learn-grid">
+      <div class="learn-card" data-r data-d="1">
+        <div class="card-num">01</div>
+        <h3 class="card-title">Os sintomas que mais confundem o diagnóstico</h3>
+        <p class="card-desc">Identifique as apresentações clínicas sobrepostas que induzem ao erro e aprenda como interpretá-las com precisão.</p>
+      </div>
+      <div class="learn-card" data-r data-d="2">
+        <div class="card-num">02</div>
+        <h3 class="card-title">Como diferenciar sintomas episódicos de características permanentes</h3>
+        <p class="card-desc">A distinção fundamental entre os quadros episódicos do transtorno bipolar e as características estáveis do TDAH.</p>
+      </div>
+      <div class="learn-card" data-r data-d="3">
+        <div class="card-num">03</div>
+        <h3 class="card-title">Os principais erros que levam ao diagnóstico incorreto</h3>
+        <p class="card-desc">As armadilhas mais comuns na prática clínica e o que fazer para não cair nelas.</p>
+      </div>
+      <div class="learn-card" data-r data-d="4">
+        <div class="card-num">04</div>
+        <h3 class="card-title">Quando suspeitar de comorbidade entre TDAH e transtorno bipolar</h3>
+        <p class="card-desc">Reconheça os sinais de coexistência dos dois transtornos e como manejar essa complexidade clínica.</p>
+      </div>
+      <div class="learn-card" data-r data-d="5">
+        <div class="card-num">05</div>
+        <h3 class="card-title">Os riscos de tratar um diagnóstico errado</h3>
+        <p class="card-desc">As consequências clínicas do diagnóstico equivocado e o impacto na evolução e qualidade de vida do paciente.</p>
+      </div>
+      <div class="learn-card" data-r data-d="6">
+        <div class="card-num">06</div>
+        <h3 class="card-title">Casos clínicos reais comentados passo a passo</h3>
+        <p class="card-desc">Análise detalhada de casos reais com perguntas-chave aplicáveis já na sua próxima consulta.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================
+     BIO
+     ============================ -->
+<section class="section sec-bio">
+  <div class="gold-rule"></div>
+  <div class="sec-inner">
+    <div class="bio-grid">
+
+      <!-- Foto -->
+      <div class="bio-photo-area" data-r>
+        <div class="bio-ring-outer"></div>
+        <div class="bio-ring-mid"></div>
+        <div class="bio-circle">
+          <!--
+            Salve a foto do Dr. Arthur como "foto-dr-arthur.jpg"
+            na mesma pasta do index.html para exibir a foto real.
+          -->
+          <img
+            src="foto.jpg"
+            alt="Dr. Arthur Silva — Médico Psiquiatra"
+            class="bio-img">
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div>
+        <p class="bio-eyebrow" data-r>Quem vai te ensinar</p>
+        <h2 class="bio-name" data-r data-d="1">Dr. Arthur Silva</h2>
+        <p class="bio-text" data-r data-d="2">
+          Dr. Arthur Silva é Médico Psiquiatra formado pela Universidade do Estado do Pará (UEPA), com residência médica em psiquiatria na Fundação Hospital de Clínicas Gaspar Vianna (FHCGV/UEPA). Mestre em Ensino em Saúde — Educação Médica pelo Centro Universitário do Pará (CESUPA), atualmente preceptor do Programa de Residência Médica em Psiquiatria da FHCGV. Possui ampla experiência como docente na graduação de medicina e em programas de pós-graduação em psiquiatria geral, com sólida trajetória em preceptoria e supervisão clínica em psiquiatria.
+        </p>
+        <button
+          class="btn-bio"
+          data-r data-d="3"
+          onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+          Quero garantir minha vaga
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">PSIQEXPERT</span>
+  <p class="footer-tag">Mentoria Premium em Psiquiatria</p>
+  <p class="footer-copy">© 2026 PsiqExpert. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+/* ===========================
+   FORM SUBMISSION
+   =========================== */
+const webinarForm = document.getElementById('webinar-form');
+const formSuccess = document.getElementById('form-success');
+const btnSubmit   = document.getElementById('btn-submit');
+
+webinarForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const params = new URLSearchParams({
+    nome:     webinarForm.nome.value.trim(),
+    email:    webinarForm.email.value.trim(),
+    whatsapp: webinarForm.whatsapp.value.trim(),
+    crm:      webinarForm.crm.value.trim()
+  });
+
+  btnSubmit.textContent = 'Enviando...';
+  btnSubmit.disabled = true;
+
+  fetch('APPS_SCRIPT_URL', {
+    method:  'POST',
+    mode:    'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body:    params.toString()
+  }).finally(() => {
+    webinarForm.style.display = 'none';
+    formSuccess.style.display = 'block';
+  });
+});
+
+/* ===========================
+   SCROLL REVEAL
+   =========================== */
+const revealEls = document.querySelectorAll('[data-r]');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('vis');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+revealEls.forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
