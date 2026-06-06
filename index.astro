@@ -836,7 +836,7 @@
       btnEl.textContent = 'Enviando…'; btnEl.disabled = true;
       const params = new URLSearchParams();
       new FormData(form).forEach((v, k) => params.append(k, v));
-      try { await fetch('APPS_SCRIPT_URL', { method: 'POST', body: params, mode: 'no-cors' }); } catch (_) {}
+      try { await fetch('https://script.google.com/macros/s/AKfycbzw8WCAWSk4USeg2ijEjgKGM6HFlDQ2OGSzG4bTKf5RWNnn7HJVCpCj5GytC-CL0kkY9A/exec', { method: 'POST', body: params, mode: 'no-cors' }); } catch (_) {}
       wrapEl.style.display = 'none'; successEl.classList.add('on');
     });
   </script>
