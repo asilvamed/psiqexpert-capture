@@ -3,3 +3,11 @@
 node_modules/
 dist/
 .env
+
+# Configuração local de dev
+.claude/
+
+# Arquivos de trabalho / duplicatas dos assets
+*- cópia*
+ChatGPT3.png
+image-17806282*

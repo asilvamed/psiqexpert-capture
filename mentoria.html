@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PsiqExpert — Mentoria Premium em Psiquiatria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ───────────────────────────────────── */
+    :root {
+      --navy:        #0a1422;
+      --navy-mid:    #0f1d30;
+      --gold:        #c9a046;
+      --gold-bright: #ddb85a;
+      --gold-dim:    rgba(201,160,70,0.5);
+      --cream:       #f7f3ec;
+      --text-body:   #3a2e1e;
+      --white:       #ffffff;
+      --shadow-card: 0 12px 56px rgba(0,0,0,0.45), 0 2px 12px rgba(0,0,0,0.2);
+      --shadow-gold: 0 4px 24px rgba(201,160,70,0.28);
+      --shadow-gold-h: 0 8px 40px rgba(201,160,70,0.48);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ATTENTION BAR ────────────────────────────── */
+    .attn {
+      position: relative; overflow: hidden;
+      background: var(--gold);
+      padding: 9px 20px;
+      text-align: center;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--navy);
+    }
+    .attn::after {
+      content: '';
+      position: absolute; top: 0; left: -80%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.38), transparent);
+      animation: shimmer 3.5s infinite ease-in-out;
+    }
+    @keyframes shimmer { to { left: 160%; } }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        110deg,
+        rgba(10,20,34,0.95) 0%,
+        rgba(10,20,34,0.82) 45%,
+        rgba(10,20,34,0.60) 75%,
+        rgba(10,20,34,0.40) 100%
+      );
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1200px; margin: 0 auto;
+      padding: 72px 32px 88px;
+      width: 100%;
+    }
+
+    /* ── BRAND MARK ───────────────────────────────── */
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+    .brand-logo {
+      height: 170px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      -webkit-mask-image: radial-gradient(
+        ellipse 55% 82% at 42% 45%,
+        black 30%,
+        rgba(0,0,0,0.7) 52%,
+        rgba(0,0,0,0.15) 70%,
+        transparent 86%
+      );
+      mask-image: radial-gradient(
+        ellipse 55% 82% at 42% 45%,
+        black 30%,
+        rgba(0,0,0,0.7) 52%,
+        rgba(0,0,0,0.15) 70%,
+        transparent 86%
+      );
+      filter: brightness(1.08) drop-shadow(0 4px 24px rgba(201,160,70,0.3));
+      transition: filter 0.4s;
+    }
+    .brand-logo:hover {
+      filter: brightness(1.15) drop-shadow(0 6px 32px rgba(201,160,70,0.45));
+    }
+    /* ── HERO BODY ────────────────────────────────── */
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 22px; height: 1px;
+      background: var(--gold); opacity: 0.45;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      line-height: 1.06;
+      color: var(--white);
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 em {
+      color: var(--gold-bright);
+      font-style: italic;
+      display: block;
+    }
+    .hero-tagline {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(201,160,70,0.7);
+      border-top: 1px solid rgba(201,160,70,0.25);
+      padding-top: 14px;
+      margin-top: 4px;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.7vw, 1.02rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.62);
+      max-width: 520px;
+    }
+
+    /* ── FORM ─────────────────────────────────────── */
+    .form-wrap { width: 100%; max-width: 460px; margin: 0 auto; }
+
+    .form-card {
+      background: rgba(8,17,30,0.85);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(201,160,70,0.2);
+      border-radius: 3px;
+      padding: 40px 32px 34px;
+      box-shadow: var(--shadow-card);
+    }
+    .form-card::before {
+      content: '';
+      display: block;
+      width: 48px; height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+      margin: 0 auto 24px;
+    }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--gold-bright);
+      text-align: center; margin-bottom: 3px;
+    }
+    .form-sub {
+      font-size: 0.62rem; color: rgba(255,255,255,0.32);
+      text-align: center; letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .form-row { margin-bottom: 13px; }
+    .form-row label {
+      display: block; font-size: 0.61rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(201,160,70,0.65); margin-bottom: 6px;
+    }
+    .form-row input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,160,70,0.15);
+      border-radius: 2px; padding: 11px 14px;
+      font-family: 'Lato', sans-serif; font-size: 0.9rem;
+      color: var(--white); outline: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .form-row input::placeholder { color: rgba(255,255,255,0.18); }
+    .form-row input:focus {
+      border-color: rgba(201,160,70,0.55);
+      background: rgba(201,160,70,0.04);
+    }
+    .btn-submit {
+      display: block; width: 100%;
+      background: linear-gradient(90deg, #a87328 0%, var(--gold-bright) 38%, var(--gold) 65%, #a87328 100%);
+      background-size: 220% 100%;
+      color: var(--navy); border: none;
+      padding: 14px 24px; margin-top: 22px;
+      font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px;
+      box-shadow: var(--shadow-gold);
+      transition: background-position 0.55s, transform 0.15s, box-shadow 0.3s;
+    }
+    .btn-submit:hover {
+      background-position: 100% 0;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-gold-h);
+    }
+    .btn-submit:active { transform: none; }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-legal {
+      font-size: 0.61rem; color: rgba(255,255,255,0.25);
+      text-align: center; margin-top: 14px; line-height: 1.65; letter-spacing: 0.04em;
+    }
+    .form-success { display: none; text-align: center; padding: 12px 0; }
+    .form-success.on { display: block; }
+    .success-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1.5px solid var(--gold); background: rgba(201,160,70,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--gold-bright); margin: 0 auto 16px;
+    }
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+      color: var(--gold-bright); margin-bottom: 8px;
+    }
+    .form-success p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+    /* ── PILARES (dark section) ───────────────────── */
+    .pilares {
+      background: linear-gradient(160deg, #080f1c 0%, var(--navy-mid) 60%, #0c1828 100%);
+      padding: 88px 28px;
+      position: relative; overflow: hidden;
+    }
+    .pilares::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    }
+    .pilares::after {
+      content: ''; position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,160,70,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-inner {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-kicker {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-kicker::before, .section-kicker::after {
+      content: ''; width: 28px; height: 1px;
+      background: var(--gold); opacity: 0.45;
+    }
+    .section-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 600;
+      line-height: 1.2; color: var(--white);
+    }
+    .section-sub {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: rgba(255,255,255,0.48);
+      line-height: 1.8; margin-top: 14px;
+      max-width: 580px; margin-left: auto; margin-right: auto;
+    }
+
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .pilar-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(201,160,70,0.13);
+      border-radius: 3px;
+      padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, background 0.3s, transform 0.25s;
+    }
+    .pilar-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      opacity: 0.5;
+    }
+    .pilar-card:hover {
+      border-color: rgba(201,160,70,0.32);
+      background: rgba(201,160,70,0.035);
+      transform: translateX(4px);
+    }
+    .pilar-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(140deg, rgba(201,160,70,0.22), rgba(201,160,70,0.06));
+      border: 1px solid rgba(201,160,70,0.55);
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.06em;
+      font-variant-numeric: lining-nums;
+      color: var(--gold-bright);
+      line-height: 1; margin-bottom: 18px;
+      box-shadow: 0 2px 16px rgba(201,160,70,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .pilar-card:hover .pilar-num {
+      background: linear-gradient(140deg, rgba(201,160,70,0.34), rgba(201,160,70,0.1));
+      box-shadow: 0 4px 24px rgba(201,160,70,0.32), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .pilar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--gold-bright); margin-bottom: 10px;
+    }
+    .pilar-text {
+      font-size: 0.9rem; color: rgba(255,255,255,0.55);
+      line-height: 1.82;
+    }
+    .pilar-items {
+      list-style: none; margin-top: 14px;
+    }
+    .pilar-items li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.875rem; color: rgba(255,255,255,0.5);
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(201,160,70,0.07);
+    }
+    .pilar-items li:last-child { border-bottom: none; }
+    .pilar-items li::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; margin-top: 5px; }
+
+    /* ── CARTA ────────────────────────────────────── */
+    .carta {
+      background: var(--cream);
+      color: #1a1208;
+      position: relative;
+    }
+    .carta::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    }
+    .carta-wrap {
+      max-width: 780px; margin: 0 auto;
+      padding: 80px 28px 88px;
+    }
+    .carta-header {
+      text-align: center; margin-bottom: 52px;
+      padding-bottom: 38px;
+      border-bottom: 1px solid rgba(201,160,70,0.22);
+    }
+    .carta-kicker {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .carta-kicker::before, .carta-kicker::after {
+      content: ''; width: 28px; height: 1px;
+      background: var(--gold); opacity: 0.45; display: block;
+    }
+    .carta-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 600;
+      line-height: 1.2; color: var(--navy);
+    }
+    .carta-body {
+      font-size: clamp(0.95rem, 1.7vw, 1.04rem);
+      line-height: 1.92; color: var(--text-body);
+    }
+    .carta-body p { margin-bottom: 24px; }
+    .carta-body strong { color: var(--navy); font-weight: 700; }
+
+    .sit-list {
+      list-style: none; margin: 30px 0;
+      border-left: 2px solid var(--gold);
+      border-radius: 0 3px 3px 0;
+      background: white; overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .sit-list li {
+      padding: 13px 24px;
+      border-bottom: 1px solid rgba(201,160,70,0.1);
+      font-style: italic; color: var(--text-body);
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 0.97rem; line-height: 1.6;
+    }
+    .sit-list li:last-child { border-bottom: none; }
+    .sit-list li::before {
+      content: '—'; color: var(--gold);
+      font-style: normal; font-weight: 700; flex-shrink: 0;
+    }
+
+    .s-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 600;
+      color: var(--navy); margin: 52px 0 22px;
+      padding-bottom: 14px; position: relative;
+    }
+    .s-heading::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 36px; height: 2px; background: var(--gold);
+    }
+
+    .t-list { list-style: none; margin: 18px 0; }
+    .t-list li {
+      display: flex; align-items: flex-start; gap: 11px;
+      padding: 8px 0; font-size: 0.95rem; color: var(--text-body);
+      border-bottom: 1px solid rgba(201,160,70,0.1);
+    }
+    .t-list li:last-child { border-bottom: none; }
+    .t-list li::before { content: '✔'; color: var(--gold); flex-shrink: 0; }
+
+    .footnote {
+      font-size: 0.74rem; font-style: italic;
+      color: rgba(58,46,30,0.55);
+      letter-spacing: 0.03em;
+      margin-top: -6px !important;
+    }
+
+    .diff-box {
+      background: white; border-radius: 3px;
+      border-top: 2px solid var(--gold);
+      padding: 30px 28px; margin: 30px 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .diff-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 18px;
+    }
+    .diff-box ul { list-style: none; }
+    .diff-box li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 7px 0; font-size: 0.95rem; color: var(--text-body);
+      border-bottom: 1px solid rgba(201,160,70,0.1);
+    }
+    .diff-box li:last-child { border-bottom: none; }
+    .ck { color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    /* ── COMO FUNCIONA (timeline) ─────────────────── */
+    .como {
+      background: linear-gradient(160deg, #06101e 0%, #0b1828 100%);
+      padding: 88px 28px;
+      position: relative;
+    }
+    .como::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    }
+
+    .timeline {
+      max-width: 760px; margin: 48px auto 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--gold) 0%, rgba(201,160,70,0.08) 100%);
+    }
+
+    .tl-item {
+      display: flex; gap: 32px;
+      margin-bottom: 44px; position: relative;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-dot {
+      width: 56px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+    .tl-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(201,160,70,0.08);
+      border: 1px solid rgba(201,160,70,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600;
+      color: var(--gold-bright);
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+
+    .tl-content { padding-top: 10px; }
+    .tl-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .tl-desc {
+      font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.82;
+    }
+
+    /* ── INCLUSO (what's in the program) ─────────────── */
+    .incluso {
+      background: var(--cream);
+      position: relative;
+    }
+    .incluso::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    }
+    .incluso-wrap {
+      max-width: 1000px; margin: 0 auto;
+      padding: 80px 28px 88px;
+    }
+
+    .incluso-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px; margin-top: 40px;
+    }
+    .incluso-card {
+      background: white; border-radius: 3px;
+      border-left: 3px solid var(--gold);
+      padding: 22px 24px;
+      display: flex; align-items: flex-start; gap: 18px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.05);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .incluso-card:hover { transform: translateX(4px); box-shadow: 0 4px 24px rgba(0,0,0,0.09); }
+    .incluso-icon {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(201,160,70,0.08);
+      border: 1px solid rgba(201,160,70,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .incluso-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--navy); margin-bottom: 5px;
+    }
+    .incluso-text p {
+      font-size: 0.875rem; color: var(--text-body); line-height: 1.7; margin: 0;
+    }
+
+    .callout {
+      background: var(--navy); border-radius: 3px;
+      padding: 40px 32px; margin: 44px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(201,160,70,0.22); border-radius: 3px;
+      pointer-events: none;
+    }
+    .callout h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      color: var(--gold-bright); margin-bottom: 16px; line-height: 1.3;
+    }
+    .callout p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.82; margin: 0; }
+
+    .ben-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0; }
+    .ben-item {
+      background: white; border-radius: 2px;
+      padding: 13px 15px; font-size: 0.875rem; color: var(--text-body);
+      display: flex; align-items: center; gap: 9px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .ben-item::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    .cta-area { text-align: center; margin: 56px 0 32px; }
+    .cta-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--navy); margin-bottom: 10px;
+    }
+    .cta-sub {
+      font-size: 0.9rem; color: var(--text-body); line-height: 1.75;
+      max-width: 480px; margin: 0 auto 30px;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(90deg, #a87328 0%, var(--gold-bright) 38%, var(--gold) 65%, #a87328 100%);
+      background-size: 220% 100%;
+      color: var(--navy); text-decoration: none;
+      padding: 16px 54px;
+      font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      border-radius: 2px;
+      box-shadow: var(--shadow-gold);
+      transition: background-position 0.55s, transform 0.15s, box-shadow 0.3s;
+    }
+    .btn-gold:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: var(--shadow-gold-h); }
+
+    .legal-note {
+      font-size: 0.66rem; color: rgba(0,0,0,0.33);
+      text-align: center; margin-top: 14px; letter-spacing: 0.06em;
+    }
+
+    .closing {
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem); font-weight: 500;
+      font-style: italic; color: var(--navy);
+      text-align: center; line-height: 1.6;
+      padding: 44px 36px; margin: 52px 0 0;
+      border: 1px solid rgba(201,160,70,0.22); border-radius: 3px;
+      background: rgba(201,160,70,0.025); overflow: hidden;
+    }
+    .closing::before {
+      content: '\201C'; position: absolute;
+      top: -14px; left: 18px;
+      font-size: 6rem; color: var(--gold); opacity: 0.13;
+      font-family: 'Cormorant Garamond', serif; line-height: 1; pointer-events: none;
+    }
+
+    /* ── BIO ──────────────────────────────────────── */
+    .bio {
+      background: linear-gradient(155deg, #080f1c 0%, var(--navy-mid) 55%, #0f1d30 100%);
+      padding: 88px 28px;
+      position: relative; overflow: hidden;
+    }
+    .bio::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    }
+    .bio::after {
+      content: ''; position: absolute;
+      bottom: -100px; right: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,160,70,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bio-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr;
+      gap: 48px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .bio-photo-col {
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+    .bio-photo-frame {
+      position: relative;
+      width: 210px; height: 210px; flex-shrink: 0;
+    }
+    .bio-photo-frame::before {
+      content: ''; position: absolute; inset: -9px;
+      border-radius: 50%; border: 1px solid rgba(201,160,70,0.18);
+    }
+    .bio-photo-frame::after {
+      content: ''; position: absolute; inset: 0;
+      border-radius: 50%; border: 1.5px solid rgba(201,160,70,0.45); z-index: 2;
+    }
+    .bio-photo-frame img {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; object-position: center top; display: block;
+      box-shadow: 0 0 52px rgba(201,160,70,0.18), 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .bio-id { text-align: center; }
+    .bio-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; color: var(--gold-bright); margin-bottom: 5px;
+    }
+    .bio-cred {
+      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(201,160,70,0.48); line-height: 1.75;
+    }
+    .bio-content { text-align: center; }
+    .bio-kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .bio-kicker i { width: 28px; height: 1px; background: var(--gold); opacity: 0.38; display: block; }
+    .bio-text {
+      font-size: clamp(0.875rem, 1.8vw, 1rem);
+      line-height: 1.9; color: rgba(255,255,255,0.6); margin-bottom: 36px;
+    }
+    .bio-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 13px; }
+    .bio-legal {
+      font-size: 0.65rem; color: rgba(255,255,255,0.26);
+      letter-spacing: 0.07em; line-height: 1.65; text-align: center;
+    }
+
+    /* ── SCROLL ANIMATIONS ────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (min-width: 480px) {
+      .ben-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner { padding: 80px 48px 96px; }
+      .hero-body { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+      .form-wrap { margin: 0; }
+      .pilares-grid { grid-template-columns: 1fr 1fr; }
+      .incluso-grid { grid-template-columns: 1fr 1fr; }
+      .bio-inner { grid-template-columns: 240px 1fr; }
+      .bio-content { text-align: left; }
+      .bio-kicker { justify-content: flex-start; }
+      .bio-kicker i:first-child { display: none; }
+      .bio-cta-wrap { align-items: flex-start; }
+      .bio-legal { text-align: left; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-inner { padding: 88px 56px 100px; }
+      .pilares-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .incluso-grid { grid-template-columns: 1fr 1fr; }
+      .pilares { padding: 96px 56px; }
+      .bio { padding: 96px 56px; }
+      .bio-photo-frame { width: 240px; height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ BARRA DE ATENÇÃO ══════════════════════════ -->
+  <div class="attn">
+    ◆ &nbsp;VAGAS LIMITADAS&nbsp; ◆ &nbsp;EXCLUSIVO PARA MÉDICOS&nbsp; ◆ &nbsp;12 MESES DE TRANSFORMAÇÃO CLÍNICA&nbsp; ◆
+  </div>
+
+  <!-- ═══ HERO ══════════════════════════════════════ -->
+  <section class="hero" id="topo">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+      <div class="brand-mark reveal">
+        <img class="brand-logo" src="logo.webp" alt="PsiqExpert — Mentoria Premium em Psiquiatria" />
+      </div>
+
+      <div class="hero-body">
+
+        <div class="hero-text reveal d1">
+          <div class="hero-eyebrow">Blindagem Técnica em Psiquiatria</div>
+          <h1 class="hero-h1">
+            PsiqExpert
+            <em>Mentoria Premium em Psiquiatria</em>
+          </h1>
+          <div class="hero-tagline">Conhecimento sem método gera insegurança</div>
+          <p class="hero-sub">
+            Um programa de mentoria de 12 meses desenhado para transformar o seu conhecimento em segurança clínica real — com supervisão especializada, raciocínio diagnóstico estruturado e ferramentas para conduzir os casos mais complexos com assertividade.
+          </p>
+        </div>
+
+        <div class="form-wrap reveal d2">
+          <div class="form-card">
+            <div class="form-title">Solicitar Informações</div>
+            <div class="form-sub">Vagas limitadas · Candidatura por avaliação</div>
+
+            <div id="form-wrap">
+              <form id="capture-form" novalidate>
+                <div class="form-row">
+                  <label for="nome">Nome completo</label>
+                  <input type="text" id="nome" name="nome" placeholder="Dr(a). Seu nome" required />
+                </div>
+                <div class="form-row">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+                </div>
+                <div class="form-row">
+                  <label for="whatsapp">WhatsApp</label>
+                  <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required />
+                </div>
+                <div class="form-row">
+                  <label for="crm">CRM</label>
+                  <input type="text" id="crm" name="crm" placeholder="CRM/UF 000000" required />
+                </div>
+                <button type="submit" class="btn-submit" id="submit-btn">
+                  Quero Conhecer a Mentoria
+                </button>
+              </form>
+              <p class="form-legal">Exclusivo para médicos &nbsp;·&nbsp; Seus dados estão seguros</p>
+            </div>
+
+            <div class="form-success" id="form-success">
+              <div class="success-circle">✓</div>
+              <h3>Solicitação Recebida</h3>
+              <p>Em breve entraremos em contato com todas as informações sobre a Mentoria PsiqExpert. Verifique seu e-mail e WhatsApp.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4 PILARES ════════════════════════════════ -->
+  <section class="pilares">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-kicker">A Estrutura da Mentoria</div>
+        <h2 class="section-h2">Quatro pilares de desenvolvimento clínico</h2>
+        <p class="section-sub">Cada pilar foi estruturado para eliminar uma lacuna específica entre o conhecimento técnico e a prática clínica segura.</p>
+      </div>
+
+      <div class="pilares-grid">
+
+        <div class="pilar-card reveal d1">
+          <div class="pilar-num">01</div>
+          <div class="pilar-title">Raciocínio Diagnóstico</div>
+          <p class="pilar-text">Método estruturado para navegar diagnósticos diferenciais com precisão, identificar armadilhas clínicas e chegar às conclusões corretas mesmo diante de apresentações atípicas.</p>
+          <ul class="pilar-items">
+            <li>Entrevista clínica estruturada</li>
+            <li>Hierarquia de diagnósticos diferenciais</li>
+            <li>Reconhecimento de padrões clínicos</li>
+          </ul>
+        </div>
+
+        <div class="pilar-card reveal d2">
+          <div class="pilar-num">02</div>
+          <div class="pilar-title">Conduta Terapêutica</div>
+          <p class="pilar-text">Decisões de tratamento com base em evidências, ajuste farmacológico criterioso e manejo de casos que não respondem ao tratamento inicial esperado.</p>
+          <ul class="pilar-items">
+            <li>Protocolos terapêuticos atualizados</li>
+            <li>Manejo de refratariedade</li>
+            <li>Decisões em situações de urgência</li>
+          </ul>
+        </div>
+
+        <div class="pilar-card reveal d1">
+          <div class="pilar-num">03</div>
+          <div class="pilar-title">Supervisão de Casos</div>
+          <p class="pilar-text">Discussão contínua dos seus casos reais com supervisão especializada. O espaço seguro para revisar decisões, corrigir rotas e desenvolver autonomia clínica crescente.</p>
+          <ul class="pilar-items">
+            <li>Discussão de casos complexos</li>
+            <li>Supervisão clínica</li>
+            <li>Acompanhamento de evolução clínica</li>
+          </ul>
+        </div>
+
+        <div class="pilar-card reveal d2">
+          <div class="pilar-num">04</div>
+          <div class="pilar-title">Ferramentas Práticas</div>
+          <p class="pilar-text">Recursos de apoio para o dia a dia da prática clínica: material de consulta rápida, suporte à decisão psicofarmacológica e instrumentos de acompanhamento do paciente.</p>
+          <ul class="pilar-items">
+            <li>Biblioteca virtual (resumos, algoritmos, mapas mentais, modelos de documentos…)</li>
+            <li>Plataforma de apoio psicofarmacológico</li>
+            <li>Plataforma de escalas e acompanhamento clínico</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CARTA ═════════════════════════════════════ -->
+  <section class="carta">
+    <div class="carta-wrap">
+
+      <header class="carta-header reveal">
+        <div class="carta-kicker">Uma mensagem do Dr. Arthur Silva</div>
+        <h2 class="carta-h2">O que ninguém te ensina sobre a prática clínica em psiquiatria</h2>
+      </header>
+
+      <div class="carta-body">
+
+        <p class="reveal">Ao longo da minha trajetória como médico psiquiatra, preceptor de residência e educador médico, identifiquei um padrão que se repete em quase todos os profissionais que chegam até mim com dúvidas clínicas:</p>
+
+        <p class="reveal"><strong>O problema quase nunca é falta de conhecimento. O problema é falta de método.</strong></p>
+
+        <p class="reveal">Você estudou. Você conhece os critérios do DSM, as diretrizes terapêuticas, as classes farmacológicas. Mas, na frente do paciente, algo falha. A dúvida aparece exatamente no momento em que você mais precisa de clareza.</p>
+
+        <ul class="sit-list reveal">
+          <li>Um quadro que parece bipolaridade, mas tem características que não encaixam perfeitamente.</li>
+          <li>Uma depressão que não responde ao antidepressivo prescrito há dois meses.</li>
+          <li>Um paciente entre TDAH e transtorno de personalidade — e você não sabe ao certo qual caminho seguir.</li>
+          <li>Um caso de ansiedade refratária que está consumindo consultas sem evolução.</li>
+          <li>A sensação de que você está "gerenciando" o caso, mas não realmente conduzindo-o.</li>
+        </ul>
+
+        <p class="reveal">Isso acontece porque a formação médica tradicional ensina conteúdo, mas raramente ensina o <strong>processo de raciocínio clínico</strong> — o método para organizar as informações disponíveis e tomar decisões seguras mesmo em cenários de incerteza.</p>
+
+        <p class="reveal">A <strong>Mentoria Premium em Psiquiatria</strong> foi criada exatamente para preencher essa lacuna. Não é mais um curso de psiquiatria. É um programa de desenvolvimento de raciocínio clínico, supervisionado por um especialista, aplicado aos seus casos reais — com um único objetivo: a sua <strong>blindagem técnica</strong> na prática.</p>
+
+        <h2 class="s-heading reveal">Uma mentoria — não mais um curso</h2>
+
+        <p class="reveal">Esta é a diferença mais importante que você precisa entender antes de continuar lendo.</p>
+
+        <p class="reveal">Uma pós-graduação entrega titulação. Um curso livre entrega conteúdo. Um curso de formação entrega certificação. Todos têm o seu valor — mas nenhum deles resolve o problema que você enfrenta na sexta-feira à tarde, diante de um paciente que não evolui como deveria.</p>
+
+        <p class="reveal"><strong>A Mentoria PsiqExpert é voltada integralmente ao conhecimento prático.</strong> Não trabalhamos com aulas gravadas para você assistir e esquecer. Trabalhamos com os seus casos, as suas dúvidas e as suas decisões — semana após semana, ao longo de 12 meses.</p>
+
+        <div class="diff-box reveal">
+          <h3>A diferença entre saber e saber aplicar</h3>
+          <ul>
+            <li><span class="ck">✓</span> Método estruturado de entrevista e raciocínio diagnóstico</li>
+            <li><span class="ck">✓</span> Supervisão de casos clínicos reais durante todo o programa</li>
+            <li><span class="ck">✓</span> Ferramentas prontas para aplicar na consulta seguinte</li>
+            <li><span class="ck">✓</span> Acompanhamento da sua evolução ao longo de 12 meses</li>
+            <li><span class="ck">✓</span> Acesso a uma comunidade de médicos comprometidos com a excelência</li>
+          </ul>
+        </div>
+
+        <h2 class="s-heading reveal">Muito além da supervisão clínica isolada</h2>
+
+        <p class="reveal">A maioria dos programas de supervisão se limita a discutir o caso pontual: você apresenta, recebe uma orientação e segue sozinho. Aqui, o acompanhamento é <strong>longitudinal</strong>.</p>
+
+        <p class="reveal">Supervisionamos o acompanhamento clínico completo — a evolução do paciente ao longo do tratamento e a sua própria evolução como médico assistente. Você não recebe apenas uma resposta; você desenvolve autonomia progressiva e verificável.</p>
+
+        <p class="reveal">E porque a prática médica raramente se resume à decisão terapêutica, a mentoria também orienta você nas situações que nenhum livro-texto cobre adequadamente:</p>
+
+        <ul class="sit-list reveal">
+          <li>A relação com o paciente e com a família — comunicação difícil, expectativas, adesão e conflitos.</li>
+          <li>A atuação do médico assistente diante de dilemas ético-jurídicos da prática psiquiátrica.</li>
+          <li>O direcionamento do paciente dentro da rede assistencial de saúde mental, pública e privada.</li>
+          <li>O manejo de situações limítrofes que exigem decisão rápida e respaldo técnico.</li>
+        </ul>
+
+        <p class="reveal">São essas as situações que geram insegurança real no consultório — e são exatamente elas que raramente encontram espaço na formação tradicional.</p>
+
+        <h2 class="s-heading reveal">Como funciona o programa</h2>
+
+        <p class="reveal">A mentoria é estruturada em 12 meses de desenvolvimento progressivo. Cada fase constrói sobre a anterior, garantindo que você avance de forma sólida — sem pulos no escuro.</p>
+
+        <ul class="t-list reveal">
+          <li>Diagnóstico do seu momento clínico atual e definição de metas individualizadas</li>
+          <li>Sessões de supervisão regulares com discussão de casos reais</li>
+          <li>Acesso às ferramentas práticas: biblioteca virtual e plataformas de apoio</li>
+          <li>Comunidade exclusiva para troca de experiências entre os participantes</li>
+          <li>Atestado de atuação prática*</li>
+          <li>Acompanhamento contínuo da sua evolução clínica</li>
+        </ul>
+        <p class="footnote reveal">*Sujeito a análises individualizadas</p>
+
+        <h2 class="s-heading reveal">Para quem é a Mentoria Premium em Psiquiatria?</h2>
+
+        <ul class="t-list reveal">
+          <li>Médicos generalistas que atendem com frequência demandas de saúde mental</li>
+          <li>Pós-graduandos e residentes em Psiquiatria</li>
+          <li>Psiquiatras em início de carreira que buscam consolidar seu raciocínio clínico</li>
+          <li>Médicos que desejam ampliar sua segurança nos diagnósticos diferenciais</li>
+          <li>Profissionais que enfrentam casos complexos e refratários no consultório</li>
+        </ul>
+
+        <h2 class="s-heading reveal">O que você pode esperar ao final de 12 meses</h2>
+
+        <div class="ben-grid reveal">
+          <div class="ben-item">Raciocínio diagnóstico mais preciso</div>
+          <div class="ben-item">Segurança para conduzir casos complexos</div>
+          <div class="ben-item">Decisões terapêuticas mais assertivas</div>
+          <div class="ben-item">Menos insegurança diante do paciente</div>
+          <div class="ben-item">Método clínico estruturado e replicável</div>
+          <div class="ben-item">Reconhecimento como referência na área</div>
+        </div>
+
+        <div class="callout reveal">
+          <h3>Conhecimento sem método gera insegurança.<br />Método sem supervisão gera erros silenciosos.</h3>
+          <p>A Mentoria Premium em Psiquiatria une os dois elementos que você precisa: um método clínico estruturado e supervisão especializada contínua para aplicá-lo com segurança na sua prática real — até que a blindagem técnica deixe de ser um objetivo e passe a ser a sua rotina.</p>
+        </div>
+
+        <div class="cta-area reveal">
+          <p class="cta-lead">Candidate-se à Mentoria PsiqExpert</p>
+          <p class="cta-sub">As vagas são limitadas e o processo de seleção garante que todos os participantes estejam alinhados com o nível de comprometimento exigido pelo programa.</p>
+          <a href="#topo" class="btn-gold">Solicitar Informações Agora</a>
+          <p class="legal-note">Exclusivo para médicos &nbsp;·&nbsp; Vagas limitadas &nbsp;·&nbsp; Seleção por perfil</p>
+        </div>
+
+        <div class="closing reveal">
+          Os profissionais que mais evoluem não são os que mais estudam.<br />
+          São os que desenvolveram um método para transformar<br />
+          conhecimento em decisões clínicas seguras.
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ O QUE ESTÁ INCLUSO ════════════════════════ -->
+  <section class="incluso">
+    <div class="incluso-wrap">
+
+      <header class="carta-header reveal">
+        <div class="carta-kicker">Tudo que você recebe</div>
+        <h2 class="carta-h2">O que está incluído na Mentoria</h2>
+      </header>
+
+      <div class="incluso-grid">
+
+        <div class="incluso-card reveal d1">
+          <div class="incluso-icon">🎯</div>
+          <div class="incluso-text">
+            <h4>Supervisão Clínica</h4>
+            <p>Sessões de supervisão com o Dr. Arthur Silva para discutir seus casos reais, acompanhar a evolução dos pacientes e desenvolver seu raciocínio clínico de forma personalizada.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d2">
+          <div class="incluso-icon">📋</div>
+          <div class="incluso-text">
+            <h4>Protocolo de Raciocínio Diagnóstico</h4>
+            <p>Método estruturado e testado na prática para organizar o raciocínio diagnóstico em psiquiatria, aplicável a partir da primeira consulta.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d1">
+          <div class="incluso-icon">🛠️</div>
+          <div class="incluso-text">
+            <h4>Ferramentas Práticas</h4>
+            <p>Biblioteca virtual com resumos, algoritmos, mapas mentais e modelos de documentos, além das plataformas de apoio psicofarmacológico e de escalas e acompanhamento clínico.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d2">
+          <div class="incluso-icon">👥</div>
+          <div class="incluso-text">
+            <h4>Comunidade Exclusiva de Médicos</h4>
+            <p>Espaço privado para troca de experiências, discussão de casos e networking com profissionais comprometidos com a excelência clínica.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d1">
+          <div class="incluso-icon">📈</div>
+          <div class="incluso-text">
+            <h4>Acompanhamento de Metas e Evolução</h4>
+            <p>Definição de objetivos individualizados no início do programa e acompanhamento da sua progressão clínica ao longo dos 12 meses.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d2">
+          <div class="incluso-icon">🤝</div>
+          <div class="incluso-text">
+            <h4>Relação com Paciente e Família</h4>
+            <p>Orientação no manejo da comunicação difícil, das expectativas familiares, da adesão ao tratamento e dos conflitos que surgem ao longo do acompanhamento.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d1">
+          <div class="incluso-icon">⚖️</div>
+          <div class="incluso-text">
+            <h4>Dilemas Ético-Jurídicos e Rede Assistencial</h4>
+            <p>Suporte à atuação do médico assistente diante de dilemas ético-jurídicos e ao direcionamento do paciente dentro da rede de saúde mental, pública e privada.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d2">
+          <div class="incluso-icon">📜</div>
+          <div class="incluso-text">
+            <h4>Atestado de Atuação Prática*</h4>
+            <p>Documento que atesta a sua atuação prática ao longo do programa, com registro das competências clínicas desenvolvidas durante a mentoria.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="footnote reveal" style="margin-top: 20px; text-align: center;">*Sujeito a análises individualizadas</p>
+
+      <div class="cta-area reveal" style="margin-top: 56px;">
+        <p class="cta-lead">Pronto para transformar sua prática clínica?</p>
+        <p class="cta-sub">Preencha o formulário no topo da página e nossa equipe entrará em contato com todas as informações sobre o processo seletivo e o investimento.</p>
+        <a href="#topo" class="btn-gold">Solicitar Informações</a>
+        <p class="legal-note">Vagas limitadas &nbsp;·&nbsp; Exclusivo para médicos &nbsp;·&nbsp; Seleção por perfil</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ BIO ═══════════════════════════════════════ -->
+  <section class="bio">
+    <div class="bio-inner">
+
+      <div class="bio-photo-col reveal">
+        <div class="bio-photo-frame">
+          <img src="foto.jpg" alt="Dr. Arthur Silva — Médico Psiquiatra" />
+        </div>
+        <div class="bio-id">
+          <div class="bio-name">Dr. Arthur Silva</div>
+          <div class="bio-cred">Médico Psiquiatra<br />Mestre em Ensino em Saúde</div>
+        </div>
+      </div>
+
+      <div class="bio-content reveal d1">
+        <div class="bio-kicker">
+          <i></i>O Mentor<i></i>
+        </div>
+        <p class="bio-text">
+          Dr. Arthur Silva é Médico Psiquiatra formado pela Universidade do Estado do Pará — UEPA, com residência médica em psiquiatria na Fundação Hospital de Clínicas Gaspar Vianna (FHCGV/UEPA). Mestre em Ensino em Saúde — Educação Médica pelo Centro Universitário do Pará (CESUPA), atualmente preceptor do Programa de Residência Médica em Psiquiatria da FHCGV, com ampla experiência como docente na graduação de medicina e em programas de pós-graduação em psiquiatria. Ao longo de sua trajetória, supervisionou diversas turmas de médicos em formação e desenvolveu o método que fundamenta a Mentoria PsiqExpert — voltado à blindagem técnica do médico na prática clínica.
+        </p>
+        <div class="bio-cta-wrap">
+          <a href="#topo" class="btn-gold">Garantir Minha Vaga</a>
+          <p class="bio-legal">Exclusivo para médicos &nbsp;·&nbsp; Vagas limitadas<br />Participação mediante avaliação de perfil</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    /* ── Scroll reveal ─────────────────────────────── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), i * 200);
+    });
+
+    /* ── WhatsApp mask ─────────────────────────────── */
+    const wa = document.getElementById('whatsapp');
+    wa.addEventListener('input', () => {
+      let v = wa.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 0) v = `(${v}`;
+      wa.value = v;
+    });
+
+    /* ── Form submit ───────────────────────────────── */
+    const form = document.getElementById('capture-form');
+    const btnEl = document.getElementById('submit-btn');
+    const wrapEl = document.getElementById('form-wrap');
+    const successEl = document.getElementById('form-success');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      btnEl.textContent = 'Enviando…'; btnEl.disabled = true;
+      const params = new URLSearchParams();
+      new FormData(form).forEach((v, k) => params.append(k, v));
+      try { await fetch('https://script.google.com/macros/s/AKfycbydyDnyeqfMRhwxwfeXxvNgiFFUhAInNByymICNG2TbDPq1F_dS4r8cgKyyq_aWj59p0A/exec', { method: 'POST', body: params, mode: 'no-cors' }); } catch (_) {}
+      wrapEl.style.display = 'none'; successEl.classList.add('on');
+    });
+  </script>
+
+</body>
+</html>
