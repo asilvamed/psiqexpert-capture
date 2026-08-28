@@ -448,6 +448,57 @@
     .t-list li:last-child { border-bottom: none; }
     .t-list li::before { content: '✔'; color: var(--gold); flex-shrink: 0; }
 
+    /* ── FORMATOS (6 ou 12 meses) ─────────────────── */
+    .formatos {
+      display: grid; grid-template-columns: 1fr;
+      gap: 18px; margin: 32px 0 30px;
+    }
+    .formato-card {
+      position: relative;
+      background: white; border-radius: 3px;
+      border-top: 2px solid rgba(201,160,70,0.45);
+      padding: 28px 26px 24px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .formato-card.destaque {
+      border-top-color: var(--gold);
+      box-shadow: 0 4px 28px rgba(201,160,70,0.16), 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .formato-selo {
+      position: absolute; top: -1px; right: 20px;
+      background: var(--gold); color: var(--navy);
+      font-size: 0.56rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 4px 11px 3px; border-radius: 0 0 2px 2px;
+    }
+    .formato-prazo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem; font-weight: 600;
+      color: var(--navy); line-height: 1;
+      font-variant-numeric: lining-nums;
+    }
+    .formato-nome {
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin: 7px 0 14px;
+    }
+    .formato-desc {
+      font-size: 0.9rem; line-height: 1.75;
+      color: var(--text-body); margin: 0 0 14px !important;
+    }
+    .formato-lista { list-style: none; }
+    .formato-lista li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.85rem; color: var(--text-body);
+      padding: 6px 0; line-height: 1.6;
+      border-bottom: 1px solid rgba(201,160,70,0.1);
+    }
+    .formato-lista li:last-child { border-bottom: none; }
+    .formato-lista li::before {
+      content: '◆'; color: var(--gold);
+      font-size: 0.42rem; flex-shrink: 0; margin-top: 7px;
+    }
+
     .footnote {
       font-size: 0.74rem; font-style: italic;
       color: rgba(58,46,30,0.55);
@@ -739,6 +790,7 @@
       .form-wrap { margin: 0; }
       .pilares-grid { grid-template-columns: 1fr 1fr; }
       .incluso-grid { grid-template-columns: 1fr 1fr; }
+      .formatos { grid-template-columns: 1fr 1fr; gap: 20px; }
       .bio-inner { grid-template-columns: 240px 1fr; }
       .bio-content { text-align: left; }
       .bio-kicker { justify-content: flex-start; }
@@ -761,7 +813,7 @@
 
   <!-- ═══ BARRA DE ATENÇÃO ══════════════════════════ -->
   <div class="attn">
-    ◆ &nbsp;VAGAS LIMITADAS&nbsp; ◆ &nbsp;EXCLUSIVO PARA MÉDICOS&nbsp; ◆ &nbsp;12 MESES DE TRANSFORMAÇÃO CLÍNICA&nbsp; ◆
+    ◆ &nbsp;VAGAS LIMITADAS&nbsp; ◆ &nbsp;EXCLUSIVO PARA MÉDICOS&nbsp; ◆ &nbsp;PROGRAMAS DE 6 OU 12 MESES&nbsp; ◆
   </div>
 
   <!-- ═══ HERO ══════════════════════════════════════ -->
@@ -784,7 +836,7 @@
           </h1>
           <div class="hero-tagline">Conhecimento sem método gera insegurança</div>
           <p class="hero-sub">
-            Um programa de mentoria de 12 meses desenhado para transformar o seu conhecimento em segurança clínica real — com supervisão especializada, raciocínio diagnóstico estruturado e ferramentas para conduzir os casos mais complexos com assertividade.
+            Um programa de mentoria — em 6 ou 12 meses — desenhado para transformar o seu conhecimento em segurança clínica real, com supervisão especializada, raciocínio diagnóstico estruturado e ferramentas para conduzir os casos mais complexos com assertividade.
           </p>
         </div>
 
@@ -924,7 +976,7 @@
 
         <p class="reveal">Uma pós-graduação entrega titulação. Um curso livre entrega conteúdo. Um curso de formação entrega certificação. Todos têm o seu valor — mas nenhum deles resolve o problema que você enfrenta na sexta-feira à tarde, diante de um paciente que não evolui como deveria.</p>
 
-        <p class="reveal"><strong>A Mentoria PsiqExpert é voltada integralmente ao conhecimento prático.</strong> Não trabalhamos com aulas gravadas para você assistir e esquecer. Trabalhamos com os seus casos, as suas dúvidas e as suas decisões — semana após semana, ao longo de 12 meses.</p>
+        <p class="reveal"><strong>A Mentoria PsiqExpert é voltada integralmente ao conhecimento prático.</strong> Não trabalhamos com aulas gravadas para você assistir e esquecer. Trabalhamos com os seus casos, as suas dúvidas e as suas decisões — semana após semana, ao longo de todo o programa.</p>
 
         <div class="diff-box reveal">
           <h3>A diferença entre saber e saber aplicar</h3>
@@ -932,7 +984,7 @@
             <li><span class="ck">✓</span> Método estruturado de entrevista e raciocínio diagnóstico</li>
             <li><span class="ck">✓</span> Supervisão de casos clínicos reais durante todo o programa</li>
             <li><span class="ck">✓</span> Ferramentas prontas para aplicar na consulta seguinte</li>
-            <li><span class="ck">✓</span> Acompanhamento da sua evolução ao longo de 12 meses</li>
+            <li><span class="ck">✓</span> Acompanhamento da sua evolução do início ao fim do programa</li>
             <li><span class="ck">✓</span> Acesso a uma comunidade de médicos comprometidos com a excelência</li>
           </ul>
         </div>
@@ -956,7 +1008,38 @@
 
         <h2 class="s-heading reveal">Como funciona o programa</h2>
 
-        <p class="reveal">A mentoria é estruturada em 12 meses de desenvolvimento progressivo. Cada fase constrói sobre a anterior, garantindo que você avance de forma sólida — sem pulos no escuro.</p>
+        <p class="reveal">A mentoria é estruturada em fases de desenvolvimento progressivo. Cada fase constrói sobre a anterior, garantindo que você avance de forma sólida — sem pulos no escuro.</p>
+
+        <p class="reveal">O programa está disponível em <strong>dois formatos: 6 ou 12 meses</strong>. Ambos cumprem <strong>exatamente o mesmo conteúdo</strong> — os quatro pilares, o método de raciocínio diagnóstico e o acesso integral às ferramentas práticas. A diferença está no <strong>tempo de supervisão clínica prática</strong>: o formato de 12 meses oferece um período maior de acompanhamento supervisionado dos seus casos.</p>
+
+        <div class="formatos reveal">
+          <div class="formato-card">
+            <div class="formato-prazo">6 meses</div>
+            <div class="formato-nome">Formato Intensivo</div>
+            <p class="formato-desc">Conteúdo completo em ritmo concentrado. Indicado para quem busca desenvolvimento acelerado e já possui alguma base de prática clínica consolidada.</p>
+            <ul class="formato-lista">
+              <li>Conteúdo integral dos 4 pilares</li>
+              <li>Acesso completo às ferramentas práticas</li>
+              <li>Período menor de supervisão clínica prática</li>
+            </ul>
+          </div>
+          <div class="formato-card destaque">
+            <div class="formato-selo">Mais completo</div>
+            <div class="formato-prazo">12 meses</div>
+            <div class="formato-nome">Formato Estendido</div>
+            <p class="formato-desc">Mesmo conteúdo, com o dobro de tempo de supervisão clínica prática — mais casos acompanhados e maior consolidação do método na sua rotina.</p>
+            <ul class="formato-lista">
+              <li>Conteúdo integral dos 4 pilares</li>
+              <li>Acesso completo às ferramentas práticas</li>
+              <li>Período estendido de supervisão clínica prática</li>
+              <li>Acompanhamento longitudinal mais amplo dos seus pacientes</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="reveal">A definição do formato mais adequado ao seu momento profissional acontece na conversa inicial, antes do ingresso no programa.</p>
+
+        <p class="reveal">Em ambos os formatos, você recebe:</p>
 
         <ul class="t-list reveal">
           <li>Diagnóstico do seu momento clínico atual e definição de metas individualizadas</li>
@@ -978,7 +1061,7 @@
           <li>Profissionais que enfrentam casos complexos e refratários no consultório</li>
         </ul>
 
-        <h2 class="s-heading reveal">O que você pode esperar ao final de 12 meses</h2>
+        <h2 class="s-heading reveal">O que você pode esperar ao final do programa</h2>
 
         <div class="ben-grid reveal">
           <div class="ben-item">Raciocínio diagnóstico mais preciso</div>
@@ -1058,7 +1141,7 @@
           <div class="incluso-icon">📈</div>
           <div class="incluso-text">
             <h4>Acompanhamento de Metas e Evolução</h4>
-            <p>Definição de objetivos individualizados no início do programa e acompanhamento da sua progressão clínica ao longo dos 12 meses.</p>
+            <p>Definição de objetivos individualizados no início do programa e acompanhamento da sua progressão clínica até o encerramento, seja no formato de 6 ou de 12 meses.</p>
           </div>
         </div>
 
