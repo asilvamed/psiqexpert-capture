@@ -180,55 +180,91 @@
     }
 
     /* Right — form */
-    .form-wrap { width: 100%; max-width: 460px; margin: 0 auto; }
-
-    /* Moldura externa dourada — dá presença ao cartão sem pesar */
-    .form-frame {
+    .form-wrap {
       position: relative;
-      padding: 9px;
+      width: 100%; max-width: 486px; margin: 0 auto;
+    }
+    /* Halo de luz atrás do cartão — ilumina a área do formulário */
+    .form-wrap::before {
+      content: '';
+      position: absolute; inset: -16% -13%;
+      background: radial-gradient(ellipse at center,
+        rgba(201,160,70,0.20) 0%,
+        rgba(201,160,70,0.09) 40%,
+        transparent 70%);
+      filter: blur(10px);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Moldura externa com cantoneiras — referência ao brasão */
+    .form-frame {
+      position: relative; z-index: 1;
+      padding: 11px;
     }
     .form-frame::before {
       content: '';
       position: absolute; inset: 0;
-      border: 1px solid rgba(201,160,70,0.22);
+      border: 1px solid rgba(201,160,70,0.3);
       border-radius: 4px;
       pointer-events: none;
+    }
+    .form-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--gold-bright),var(--gold-bright)) left  top   /22px 2px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) left  top   /2px 22px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) right top   /22px 2px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) right top   /2px 22px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) left  bottom/22px 2px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) left  bottom/2px 22px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) right bottom/22px 2px no-repeat,
+        linear-gradient(var(--gold-bright),var(--gold-bright)) right bottom/2px 22px no-repeat;
     }
 
     .form-card {
       position: relative;
-      background: linear-gradient(165deg, rgba(16,30,50,0.95) 0%, rgba(9,18,32,0.96) 100%);
+      background: linear-gradient(165deg, rgba(18,33,55,0.97) 0%, rgba(9,18,32,0.98) 100%);
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(201,160,70,0.42);
+      border: 1px solid rgba(201,160,70,0.5);
       border-radius: 3px;
-      padding: 38px 32px 34px;
+      padding: 0 32px 34px;
       overflow: hidden;
-      box-shadow:
-        0 0 46px rgba(201,160,70,0.13),
-        0 18px 64px rgba(0,0,0,0.58),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+      animation: formGlow 7s ease-in-out infinite;
     }
-    /* Faixa dourada superior — sinaliza o cartão à primeira vista */
-    .form-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg,
-        rgba(201,160,70,0.25) 0%,
-        var(--gold-bright) 28%,
-        var(--gold) 55%,
-        rgba(201,160,70,0.25) 100%);
+    /* Respiro lento do halo — chama o olhar sem piscar */
+    @keyframes formGlow {
+      0%, 100% {
+        box-shadow: 0 0 44px rgba(201,160,70,0.18),
+                    0 18px 64px rgba(0,0,0,0.6),
+                    inset 0 1px 0 rgba(255,255,255,0.06);
+      }
+      50% {
+        box-shadow: 0 0 86px rgba(201,160,70,0.36),
+                    0 18px 64px rgba(0,0,0,0.6),
+                    inset 0 1px 0 rgba(255,255,255,0.06);
+      }
     }
 
-    .form-kicker {
-      display: flex; align-items: center; justify-content: center; gap: 9px;
-      font-size: 0.57rem; font-weight: 700;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 13px;
+    /* Faixa dourada sólida — âncora visual do cartão */
+    .form-band {
+      position: relative; overflow: hidden;
+      margin: 0 -32px 24px;
+      padding: 12px 16px;
+      background: linear-gradient(90deg, #a87328 0%, var(--gold-bright) 40%, var(--gold) 68%, #a87328 100%);
+      color: var(--navy); text-align: center;
+      font-size: 0.63rem; font-weight: 700;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      box-shadow: 0 2px 18px rgba(201,160,70,0.3);
     }
-    .form-kicker::before, .form-kicker::after {
-      content: ''; width: 20px; height: 1px;
-      background: var(--gold); opacity: 0.4;
+    .form-band::after {
+      content: '';
+      position: absolute; top: 0; left: -80%;
+      width: 45%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 5s infinite ease-in-out;
+      pointer-events: none;
     }
 
     .form-title {
@@ -582,6 +618,12 @@
       letter-spacing: 0.07em; line-height: 1.65; text-align: center;
     }
 
+    /* Respeita quem pediu menos movimento no sistema */
+    @media (prefers-reduced-motion: reduce) {
+      .form-card { animation: none; box-shadow: 0 0 62px rgba(201,160,70,0.28), 0 18px 64px rgba(0,0,0,0.6); }
+      .form-band::after, .btn-submit::after, .attn::after { animation: none; display: none; }
+    }
+
     /* ── SCROLL ANIMATIONS ────────────────────────── */
     .reveal {
       opacity: 0; transform: translateY(28px);
@@ -665,7 +707,7 @@
         <div class="form-wrap reveal d2">
           <div class="form-frame">
           <div class="form-card">
-            <div class="form-kicker">Comece por aqui</div>
+            <div class="form-band">Comece por aqui</div>
             <div class="form-title">Reunião Estratégica 1:1</div>
             <div class="form-sub">Preencha seus dados para agendar</div>
 
