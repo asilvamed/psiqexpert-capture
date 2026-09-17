@@ -140,8 +140,8 @@
     .hero-h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
-      line-height: 1.06;
+      font-size: clamp(1.95rem, 4.2vw, 3.2rem);
+      line-height: 1.12;
       color: var(--white);
       margin-bottom: 22px;
       letter-spacing: -0.01em;
@@ -501,6 +501,67 @@
       font-style: normal; font-weight: 700; flex-shrink: 0;
     }
 
+    /* Frase-chave da carta */
+    .frase-chave {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.9vw, 1.72rem);
+      line-height: 1.45; text-align: center;
+      color: var(--navy);
+      margin: 38px 0 !important;
+      padding: 26px 22px;
+      border-top: 1px solid rgba(201,160,70,0.3);
+      border-bottom: 1px solid rgba(201,160,70,0.3);
+    }
+    .frase-chave strong {
+      display: block;
+      color: #8a6a1f; font-weight: 600;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Sub-título de seção */
+    .s-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 600;
+      color: var(--navy); margin: 48px 0 18px;
+      padding-bottom: 13px; position: relative;
+      text-align: center;
+    }
+    .s-heading::after {
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 36px; height: 2px; background: var(--gold);
+    }
+
+    /* Lista de qualificação */
+    .t-list { list-style: none; margin: 18px auto 0; max-width: 620px; }
+    .t-list li {
+      display: flex; align-items: flex-start; gap: 11px;
+      padding: 9px 0; font-size: 0.93rem; color: var(--text-body);
+      border-bottom: 1px solid rgba(201,160,70,0.12);
+      line-height: 1.6;
+    }
+    .t-list li:last-child { border-bottom: none; }
+    .t-list li::before { content: '✔'; color: var(--gold); flex-shrink: 0; }
+
+    /* Bloco de fecho emocional antes do CTA */
+    .callout {
+      background: var(--navy); border-radius: 3px;
+      padding: 40px 32px; margin: 48px 0 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(201,160,70,0.22); border-radius: 3px;
+      pointer-events: none;
+    }
+    .callout h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      color: var(--gold-bright); margin-bottom: 16px; line-height: 1.3;
+    }
+    .callout p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.82; margin: 0; }
+
     /* ── INCLUSO (what's in the program) ─────────────── */
     .incluso {
       background: var(--cream);
@@ -723,10 +784,10 @@
       <div class="hero-body">
 
         <div class="hero-text reveal d1">
-          <div class="hero-eyebrow">Mentoria Premium em Psiquiatria</div>
+          <div class="hero-eyebrow">PsiqExpert · Mentoria Premium em Psiquiatria</div>
           <h1 class="hero-h1">
-            PsiqExpert
-            <em>Mentoria Premium em Psiquiatria</em>
+            Não é sobre conhecer mais psiquiatria.
+            <em>É sobre saber o que fazer diante do paciente que está na sua frente.</em>
           </h1>
           <div class="hero-tagline">Conhecimento sem método gera insegurança</div>
           <p class="hero-sub">
@@ -798,7 +859,12 @@
           <li>A sensação de estar gerenciando o caso, em vez de conduzi-lo.</li>
         </ul>
 
-        <p class="reveal">Se a resposta for sim, o problema quase nunca é falta de estudo. <strong>É falta de método.</strong></p>
+        <p class="reveal">Se a resposta for sim, isso não acontece por falta de dedicação ou estudo. Os casos mais desafiadores da saúde mental exigem algo que poucos cursos ensinam: <strong>raciocínio clínico aplicado à prática real.</strong></p>
+
+        <p class="frase-chave reveal">
+          O conhecimento está disponível para todos.
+          <strong>A segurança para tomar decisões difíceis, não.</strong>
+        </p>
 
         <p class="reveal">Você conhece os critérios, as diretrizes e as classes farmacológicas. Mas, diante do paciente, a dúvida aparece exatamente no momento em que você mais precisa de clareza — e é justamente esse momento que a formação tradicional não ensina a atravessar.</p>
 
@@ -888,6 +954,21 @@
           </div>
         </div>
 
+      </div>
+
+      <h2 class="s-heading reveal">Para quem é a PsiqExpert?</h2>
+
+      <ul class="t-list reveal">
+        <li>Médicos generalistas que atendem pacientes com demandas de saúde mental</li>
+        <li>Pós-graduandos e residentes em Psiquiatria</li>
+        <li>Psiquiatras em início de carreira</li>
+        <li>Médicos que desejam aprofundar seu raciocínio diagnóstico</li>
+        <li>Profissionais que buscam mais segurança clínica e melhores resultados assistenciais</li>
+      </ul>
+
+      <div class="callout reveal">
+        <h3>Você não precisa enfrentar os casos mais difíceis sozinho.</h3>
+        <p>Os maiores avanços na prática clínica acontecem quando existe supervisão, troca de experiências e direcionamento adequado.<br /><br />Foi exatamente para isso que a PsiqExpert foi criada.</p>
       </div>
 
       <div class="cta-area reveal">
