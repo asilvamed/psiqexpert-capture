@@ -437,18 +437,6 @@
       font-size: 0.9rem; color: rgba(255,255,255,0.55);
       line-height: 1.82;
     }
-    .pilar-items {
-      list-style: none; margin-top: 14px;
-    }
-    .pilar-items li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.875rem; color: rgba(255,255,255,0.5);
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(201,160,70,0.07);
-    }
-    .pilar-items li:last-child { border-bottom: none; }
-    .pilar-items li::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; margin-top: 5px; }
-
     /* ── CARTA ────────────────────────────────────── */
     .carta {
       background: var(--cream);
@@ -511,161 +499,6 @@
       font-style: normal; font-weight: 700; flex-shrink: 0;
     }
 
-    .s-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 600;
-      color: var(--navy); margin: 52px 0 22px;
-      padding-bottom: 14px; position: relative;
-    }
-    .s-heading::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 36px; height: 2px; background: var(--gold);
-    }
-
-    .t-list { list-style: none; margin: 18px 0; }
-    .t-list li {
-      display: flex; align-items: flex-start; gap: 11px;
-      padding: 8px 0; font-size: 0.95rem; color: var(--text-body);
-      border-bottom: 1px solid rgba(201,160,70,0.1);
-    }
-    .t-list li:last-child { border-bottom: none; }
-    .t-list li::before { content: '✔'; color: var(--gold); flex-shrink: 0; }
-
-    /* ── FORMATOS (6 ou 12 meses) ─────────────────── */
-    .formatos {
-      display: grid; grid-template-columns: 1fr;
-      gap: 18px; margin: 32px 0 30px;
-    }
-    .formato-card {
-      position: relative;
-      background: white; border-radius: 3px;
-      border-top: 2px solid rgba(201,160,70,0.45);
-      padding: 28px 26px 24px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-    }
-    .formato-card.destaque {
-      border-top-color: var(--gold);
-      box-shadow: 0 4px 28px rgba(201,160,70,0.16), 0 2px 20px rgba(0,0,0,0.06);
-    }
-    .formato-selo {
-      position: absolute; top: -1px; right: 20px;
-      background: var(--gold); color: var(--navy);
-      font-size: 0.56rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 4px 11px 3px; border-radius: 0 0 2px 2px;
-    }
-    .formato-prazo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.1rem; font-weight: 600;
-      color: var(--navy); line-height: 1;
-      font-variant-numeric: lining-nums;
-    }
-    .formato-nome {
-      font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin: 7px 0 14px;
-    }
-    .formato-desc {
-      font-size: 0.9rem; line-height: 1.75;
-      color: var(--text-body); margin: 0 0 14px !important;
-    }
-    .formato-lista { list-style: none; }
-    .formato-lista li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.85rem; color: var(--text-body);
-      padding: 6px 0; line-height: 1.6;
-      border-bottom: 1px solid rgba(201,160,70,0.1);
-    }
-    .formato-lista li:last-child { border-bottom: none; }
-    .formato-lista li::before {
-      content: '◆'; color: var(--gold);
-      font-size: 0.42rem; flex-shrink: 0; margin-top: 7px;
-    }
-
-    .footnote {
-      font-size: 0.74rem; font-style: italic;
-      color: rgba(58,46,30,0.55);
-      letter-spacing: 0.03em;
-      margin-top: -6px !important;
-    }
-
-    .diff-box {
-      background: white; border-radius: 3px;
-      border-top: 2px solid var(--gold);
-      padding: 30px 28px; margin: 30px 0;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-    }
-    .diff-box h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; color: var(--navy); margin-bottom: 18px;
-    }
-    .diff-box ul { list-style: none; }
-    .diff-box li {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 7px 0; font-size: 0.95rem; color: var(--text-body);
-      border-bottom: 1px solid rgba(201,160,70,0.1);
-    }
-    .diff-box li:last-child { border-bottom: none; }
-    .ck { color: var(--gold); font-weight: 700; flex-shrink: 0; }
-
-    /* ── COMO FUNCIONA (timeline) ─────────────────── */
-    .como {
-      background: linear-gradient(160deg, #06101e 0%, #0b1828 100%);
-      padding: 88px 28px;
-      position: relative;
-    }
-    .como::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
-    }
-
-    .timeline {
-      max-width: 760px; margin: 48px auto 0;
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 28px; top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, var(--gold) 0%, rgba(201,160,70,0.08) 100%);
-    }
-
-    .tl-item {
-      display: flex; gap: 32px;
-      margin-bottom: 44px; position: relative;
-    }
-    .tl-item:last-child { margin-bottom: 0; }
-
-    .tl-dot {
-      width: 56px; flex-shrink: 0;
-      display: flex; flex-direction: column; align-items: center; gap: 0;
-    }
-    .tl-num {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(201,160,70,0.08);
-      border: 1px solid rgba(201,160,70,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 600;
-      color: var(--gold-bright);
-      flex-shrink: 0;
-      position: relative; z-index: 1;
-    }
-
-    .tl-content { padding-top: 10px; }
-    .tl-tag {
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-    }
-    .tl-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 600; color: var(--white);
-      margin-bottom: 8px;
-    }
-    .tl-desc {
-      font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.82;
-    }
-
     /* ── INCLUSO (what's in the program) ─────────────── */
     .incluso {
       background: var(--cream);
@@ -709,32 +542,6 @@
     .incluso-text p {
       font-size: 0.875rem; color: var(--text-body); line-height: 1.7; margin: 0;
     }
-
-    .callout {
-      background: var(--navy); border-radius: 3px;
-      padding: 40px 32px; margin: 44px 0; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .callout::before {
-      content: ''; position: absolute; inset: 0;
-      border: 1px solid rgba(201,160,70,0.22); border-radius: 3px;
-      pointer-events: none;
-    }
-    .callout h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.85rem);
-      color: var(--gold-bright); margin-bottom: 16px; line-height: 1.3;
-    }
-    .callout p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.82; margin: 0; }
-
-    .ben-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 22px 0; }
-    .ben-item {
-      background: white; border-radius: 2px;
-      padding: 13px 15px; font-size: 0.875rem; color: var(--text-body);
-      display: flex; align-items: center; gap: 9px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-    }
-    .ben-item::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
 
     .cta-area { text-align: center; margin: 56px 0 32px; }
     .cta-lead {
@@ -866,11 +673,8 @@
     .reveal.in { opacity: 1; transform: translateY(0); }
     .d1 { transition-delay: 0.1s; }
     .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-
     /* ── RESPONSIVE ───────────────────────────────── */
     @media (min-width: 480px) {
-      .ben-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (min-width: 768px) {
@@ -879,7 +683,6 @@
       .form-wrap { margin: 0; }
       .pilares-grid { grid-template-columns: 1fr 1fr; }
       .incluso-grid { grid-template-columns: 1fr 1fr; }
-      .formatos { grid-template-columns: 1fr 1fr; gap: 20px; }
       .bio-inner { grid-template-columns: 240px 1fr; }
       .bio-content { text-align: left; }
       .bio-kicker { justify-content: flex-start; }
@@ -902,7 +705,7 @@
 
   <!-- ═══ BARRA DE ATENÇÃO ══════════════════════════ -->
   <div class="attn">
-    ◆ &nbsp;VAGAS LIMITADAS&nbsp; ◆ &nbsp;EXCLUSIVO PARA MÉDICOS&nbsp; ◆ &nbsp;PROGRAMAS DE 6 OU 12 MESES&nbsp; ◆
+    ◆ &nbsp;VAGAS LIMITADAS&nbsp; ◆ &nbsp;EXCLUSIVO PARA MÉDICOS&nbsp; ◆ &nbsp;REUNIÃO 1:1 COM O DR. ARTHUR SILVA&nbsp; ◆
   </div>
 
   <!-- ═══ HERO ══════════════════════════════════════ -->
@@ -918,23 +721,23 @@
       <div class="hero-body">
 
         <div class="hero-text reveal d1">
-          <div class="hero-eyebrow">Blindagem Técnica em Psiquiatria</div>
+          <div class="hero-eyebrow">Mentoria Premium em Psiquiatria</div>
           <h1 class="hero-h1">
             PsiqExpert
             <em>Mentoria Premium em Psiquiatria</em>
           </h1>
           <div class="hero-tagline">Conhecimento sem método gera insegurança</div>
           <p class="hero-sub">
-            Um programa de mentoria — em 6 ou 12 meses — desenhado para transformar o seu conhecimento em segurança clínica real, com supervisão especializada, raciocínio diagnóstico estruturado e ferramentas para conduzir os casos mais complexos com assertividade.
+            Agende uma reunião individual com o Dr. Arthur Silva. Vocês avaliam juntos o seu momento de carreira e desenham um plano para elevar a qualidade dos seus atendimentos em saúde mental e a assertividade das suas condutas.
           </p>
         </div>
 
         <div class="form-wrap reveal d2">
           <div class="form-frame">
           <div class="form-card">
-            <div class="form-band">Comece por aqui</div>
-            <div class="form-title">Solicitar Informações</div>
-            <div class="form-sub">Vagas limitadas · Candidatura por avaliação</div>
+            <div class="form-band">Quero marcar a minha reunião</div>
+            <div class="form-title">Reunião 1:1 com o Dr. Arthur</div>
+            <div class="form-sub">Vagas limitadas · Exclusivo para médicos</div>
 
             <div id="form-wrap">
               <form id="capture-form" novalidate>
@@ -955,7 +758,7 @@
                   <input type="text" id="crm" name="crm" placeholder="CRM/UF 000000" required />
                 </div>
                 <button type="submit" class="btn-submit" id="submit-btn">
-                  Quero Conhecer a Mentoria
+                  Quero Marcar Minha Reunião
                 </button>
               </form>
               <p class="form-legal">Exclusivo para médicos &nbsp;·&nbsp; Seus dados estão seguros</p>
@@ -964,11 +767,40 @@
             <div class="form-success" id="form-success">
               <div class="success-circle">✓</div>
               <h3>Solicitação Recebida</h3>
-              <p>Em breve entraremos em contato com todas as informações sobre a Mentoria PsiqExpert. Verifique seu e-mail e WhatsApp.</p>
+              <p>Em breve entraremos em contato para agendar a sua reunião com o Dr. Arthur Silva. Verifique seu e-mail e WhatsApp.</p>
             </div>
           </div>
           </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ O PROBLEMA ════════════════════════════════ -->
+  <section class="carta">
+    <div class="carta-wrap">
+
+      <header class="carta-header reveal">
+        <div class="carta-kicker">Uma mensagem do Dr. Arthur Silva</div>
+        <h2 class="carta-h2">Você já viveu alguma destas situações?</h2>
+      </header>
+
+      <div class="carta-body">
+
+        <ul class="sit-list reveal">
+          <li>Um paciente que parece ter TDAH, mas algo não fecha no diagnóstico.</li>
+          <li>Uma depressão que não responde aos tratamentos habituais.</li>
+          <li>Dúvidas entre bipolaridade, transtorno de personalidade ou ansiedade.</li>
+          <li>Um caso que evolui de forma inesperada — e você sem saber o próximo passo.</li>
+          <li>A sensação de estar gerenciando o caso, em vez de conduzi-lo.</li>
+        </ul>
+
+        <p class="reveal">Se a resposta for sim, o problema quase nunca é falta de estudo. <strong>É falta de método.</strong></p>
+
+        <p class="reveal">Você conhece os critérios, as diretrizes e as classes farmacológicas. Mas, diante do paciente, a dúvida aparece exatamente no momento em que você mais precisa de clareza — e é justamente esse momento que a formação tradicional não ensina a atravessar.</p>
+
+        <p class="reveal">A <strong>Mentoria PsiqExpert</strong> existe para preencher essa lacuna: raciocínio clínico aplicado, supervisão contínua dos seus casos reais e ferramentas prontas para a próxima consulta. Com um objetivo só — a sua <strong>blindagem técnica</strong> na prática.</p>
 
       </div>
     </div>
@@ -978,9 +810,9 @@
   <section class="pilares">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-kicker">A Estrutura da Mentoria</div>
-        <h2 class="section-h2">Quatro pilares de desenvolvimento clínico</h2>
-        <p class="section-sub">Cada pilar foi estruturado para eliminar uma lacuna específica entre o conhecimento técnico e a prática clínica segura.</p>
+        <div class="section-kicker">A essência da mentoria</div>
+        <h2 class="section-h2">Quatro pilares de segurança clínica</h2>
+        <p class="section-sub">Cada pilar elimina uma lacuna específica entre o que você sabe e o que você consegue aplicar diante do paciente.</p>
       </div>
 
       <div class="pilares-grid">
@@ -988,288 +820,85 @@
         <div class="pilar-card reveal d1">
           <div class="pilar-num">01</div>
           <div class="pilar-title">Raciocínio Diagnóstico</div>
-          <p class="pilar-text">Método estruturado para navegar diagnósticos diferenciais com precisão, identificar armadilhas clínicas e chegar às conclusões corretas mesmo diante de apresentações atípicas.</p>
-          <ul class="pilar-items">
-            <li>Entrevista clínica estruturada</li>
-            <li>Hierarquia de diagnósticos diferenciais</li>
-            <li>Reconhecimento de padrões clínicos</li>
-          </ul>
+          <p class="pilar-text">Método estruturado para navegar diagnósticos diferenciais, reconhecer armadilhas clínicas e decidir com clareza mesmo diante de quadros atípicos.</p>
         </div>
 
         <div class="pilar-card reveal d2">
           <div class="pilar-num">02</div>
           <div class="pilar-title">Conduta Terapêutica</div>
-          <p class="pilar-text">Decisões de tratamento com base em evidências, ajuste farmacológico criterioso e manejo de casos que não respondem ao tratamento inicial esperado.</p>
-          <ul class="pilar-items">
-            <li>Protocolos terapêuticos atualizados</li>
-            <li>Manejo de refratariedade</li>
-            <li>Decisões em situações de urgência</li>
-          </ul>
+          <p class="pilar-text">Decisões baseadas em evidência, ajuste farmacológico criterioso e manejo dos casos que não respondem ao tratamento inicial esperado.</p>
         </div>
 
         <div class="pilar-card reveal d1">
           <div class="pilar-num">03</div>
-          <div class="pilar-title">Supervisão de Casos</div>
-          <p class="pilar-text">Discussão contínua dos seus casos reais com supervisão especializada. O espaço seguro para revisar decisões, corrigir rotas e desenvolver autonomia clínica crescente.</p>
-          <ul class="pilar-items">
-            <li>Discussão de casos complexos</li>
-            <li>Supervisão clínica</li>
-            <li>Acompanhamento de evolução clínica</li>
-          </ul>
+          <div class="pilar-title">Supervisão Clínica</div>
+          <p class="pilar-text">Seus casos reais discutidos de forma contínua, acompanhando a evolução do paciente e a sua própria autonomia como médico assistente.</p>
         </div>
 
         <div class="pilar-card reveal d2">
           <div class="pilar-num">04</div>
           <div class="pilar-title">Ferramentas Práticas</div>
-          <p class="pilar-text">Recursos de apoio para o dia a dia da prática clínica: material de consulta rápida, suporte à decisão psicofarmacológica e instrumentos de acompanhamento do paciente.</p>
-          <ul class="pilar-items">
-            <li>Biblioteca virtual (resumos, algoritmos, mapas mentais, modelos de documentos…)</li>
-            <li>Plataforma de apoio psicofarmacológico</li>
-            <li>Plataforma de escalas e acompanhamento clínico</li>
-          </ul>
+          <p class="pilar-text">Biblioteca virtual com resumos, algoritmos, mapas mentais e modelos de documentos, além das plataformas de apoio psicofarmacológico e de escalas e acompanhamento clínico.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══ CARTA ═════════════════════════════════════ -->
-  <section class="carta">
-    <div class="carta-wrap">
-
-      <header class="carta-header reveal">
-        <div class="carta-kicker">Uma mensagem do Dr. Arthur Silva</div>
-        <h2 class="carta-h2">O que ninguém te ensina sobre a prática clínica em psiquiatria</h2>
-      </header>
-
-      <div class="carta-body">
-
-        <p class="reveal">Ao longo da minha trajetória como médico psiquiatra, preceptor de residência e educador médico, identifiquei um padrão que se repete em quase todos os profissionais que chegam até mim com dúvidas clínicas:</p>
-
-        <p class="reveal"><strong>O problema quase nunca é falta de conhecimento. O problema é falta de método.</strong></p>
-
-        <p class="reveal">Você estudou. Você conhece os critérios do DSM, as diretrizes terapêuticas, as classes farmacológicas. Mas, na frente do paciente, algo falha. A dúvida aparece exatamente no momento em que você mais precisa de clareza.</p>
-
-        <ul class="sit-list reveal">
-          <li>Um quadro que parece bipolaridade, mas tem características que não encaixam perfeitamente.</li>
-          <li>Uma depressão que não responde ao antidepressivo prescrito há dois meses.</li>
-          <li>Um paciente entre TDAH e transtorno de personalidade — e você não sabe ao certo qual caminho seguir.</li>
-          <li>Um caso de ansiedade refratária que está consumindo consultas sem evolução.</li>
-          <li>A sensação de que você está "gerenciando" o caso, mas não realmente conduzindo-o.</li>
-        </ul>
-
-        <p class="reveal">Isso acontece porque a formação médica tradicional ensina conteúdo, mas raramente ensina o <strong>processo de raciocínio clínico</strong> — o método para organizar as informações disponíveis e tomar decisões seguras mesmo em cenários de incerteza.</p>
-
-        <p class="reveal">A <strong>Mentoria Premium em Psiquiatria</strong> foi criada exatamente para preencher essa lacuna. Não é mais um curso de psiquiatria. É um programa de desenvolvimento de raciocínio clínico, supervisionado por um especialista, aplicado aos seus casos reais — com um único objetivo: a sua <strong>blindagem técnica</strong> na prática.</p>
-
-        <h2 class="s-heading reveal">Uma mentoria — não mais um curso</h2>
-
-        <p class="reveal">Esta é a diferença mais importante que você precisa entender antes de continuar lendo.</p>
-
-        <p class="reveal">Uma pós-graduação entrega titulação. Um curso livre entrega conteúdo. Um curso de formação entrega certificação. Todos têm o seu valor — mas nenhum deles resolve o problema que você enfrenta na sexta-feira à tarde, diante de um paciente que não evolui como deveria.</p>
-
-        <p class="reveal"><strong>A Mentoria PsiqExpert é voltada integralmente ao conhecimento prático.</strong> Não trabalhamos com aulas gravadas para você assistir e esquecer. Trabalhamos com os seus casos, as suas dúvidas e as suas decisões — semana após semana, ao longo de todo o programa.</p>
-
-        <div class="diff-box reveal">
-          <h3>A diferença entre saber e saber aplicar</h3>
-          <ul>
-            <li><span class="ck">✓</span> Método estruturado de entrevista e raciocínio diagnóstico</li>
-            <li><span class="ck">✓</span> Supervisão de casos clínicos reais durante todo o programa</li>
-            <li><span class="ck">✓</span> Ferramentas prontas para aplicar na consulta seguinte</li>
-            <li><span class="ck">✓</span> Acompanhamento da sua evolução do início ao fim do programa</li>
-            <li><span class="ck">✓</span> Acesso a uma comunidade de médicos comprometidos com a excelência</li>
-          </ul>
-        </div>
-
-        <h2 class="s-heading reveal">Muito além da supervisão clínica isolada</h2>
-
-        <p class="reveal">A maioria dos programas de supervisão se limita a discutir o caso pontual: você apresenta, recebe uma orientação e segue sozinho. Aqui, o acompanhamento é <strong>longitudinal</strong>.</p>
-
-        <p class="reveal">Supervisionamos o acompanhamento clínico completo — a evolução do paciente ao longo do tratamento e a sua própria evolução como médico assistente. Você não recebe apenas uma resposta; você desenvolve autonomia progressiva e verificável.</p>
-
-        <p class="reveal">E porque a prática médica raramente se resume à decisão terapêutica, a mentoria também orienta você nas situações que nenhum livro-texto cobre adequadamente:</p>
-
-        <ul class="sit-list reveal">
-          <li>A relação com o paciente e com a família — comunicação difícil, expectativas, adesão e conflitos.</li>
-          <li>A atuação do médico assistente diante de dilemas ético-jurídicos da prática psiquiátrica.</li>
-          <li>O direcionamento do paciente dentro da rede assistencial de saúde mental, pública e privada.</li>
-          <li>O manejo de situações limítrofes que exigem decisão rápida e respaldo técnico.</li>
-        </ul>
-
-        <p class="reveal">São essas as situações que geram insegurança real no consultório — e são exatamente elas que raramente encontram espaço na formação tradicional.</p>
-
-        <h2 class="s-heading reveal">Como funciona o programa</h2>
-
-        <p class="reveal">A mentoria é estruturada em fases de desenvolvimento progressivo. Cada fase constrói sobre a anterior, garantindo que você avance de forma sólida — sem pulos no escuro.</p>
-
-        <p class="reveal">O programa está disponível em <strong>dois formatos: 6 ou 12 meses</strong>. Ambos cumprem <strong>exatamente o mesmo conteúdo</strong> — os quatro pilares, o método de raciocínio diagnóstico e o acesso integral às ferramentas práticas. A diferença está no <strong>tempo de supervisão clínica prática</strong>: o formato de 12 meses oferece um período maior de acompanhamento supervisionado dos seus casos.</p>
-
-        <div class="formatos reveal">
-          <div class="formato-card">
-            <div class="formato-prazo">6 meses</div>
-            <div class="formato-nome">Formato Intensivo</div>
-            <p class="formato-desc">Conteúdo completo em ritmo concentrado. Indicado para quem busca desenvolvimento acelerado e já possui alguma base de prática clínica consolidada.</p>
-            <ul class="formato-lista">
-              <li>Conteúdo integral dos 4 pilares</li>
-              <li>Acesso completo às ferramentas práticas</li>
-              <li>Período menor de supervisão clínica prática</li>
-            </ul>
-          </div>
-          <div class="formato-card destaque">
-            <div class="formato-selo">Mais completo</div>
-            <div class="formato-prazo">12 meses</div>
-            <div class="formato-nome">Formato Estendido</div>
-            <p class="formato-desc">Mesmo conteúdo, com o dobro de tempo de supervisão clínica prática — mais casos acompanhados e maior consolidação do método na sua rotina.</p>
-            <ul class="formato-lista">
-              <li>Conteúdo integral dos 4 pilares</li>
-              <li>Acesso completo às ferramentas práticas</li>
-              <li>Período estendido de supervisão clínica prática</li>
-              <li>Acompanhamento longitudinal mais amplo dos seus pacientes</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="reveal">A definição do formato mais adequado ao seu momento profissional acontece na conversa inicial, antes do ingresso no programa.</p>
-
-        <p class="reveal">Em ambos os formatos, você recebe:</p>
-
-        <ul class="t-list reveal">
-          <li>Diagnóstico do seu momento clínico atual e definição de metas individualizadas</li>
-          <li>Sessões de supervisão regulares com discussão de casos reais</li>
-          <li>Acesso às ferramentas práticas: biblioteca virtual e plataformas de apoio</li>
-          <li>Comunidade exclusiva para troca de experiências entre os participantes</li>
-          <li>Atestado de atuação prática*</li>
-          <li>Acompanhamento contínuo da sua evolução clínica</li>
-        </ul>
-        <p class="footnote reveal">*Sujeito a análises individualizadas</p>
-
-        <h2 class="s-heading reveal">Para quem é a Mentoria Premium em Psiquiatria?</h2>
-
-        <ul class="t-list reveal">
-          <li>Médicos generalistas que atendem com frequência demandas de saúde mental</li>
-          <li>Pós-graduandos e residentes em Psiquiatria</li>
-          <li>Psiquiatras em início de carreira que buscam consolidar seu raciocínio clínico</li>
-          <li>Médicos que desejam ampliar sua segurança nos diagnósticos diferenciais</li>
-          <li>Profissionais que enfrentam casos complexos e refratários no consultório</li>
-        </ul>
-
-        <h2 class="s-heading reveal">O que você pode esperar ao final do programa</h2>
-
-        <div class="ben-grid reveal">
-          <div class="ben-item">Raciocínio diagnóstico mais preciso</div>
-          <div class="ben-item">Segurança para conduzir casos complexos</div>
-          <div class="ben-item">Decisões terapêuticas mais assertivas</div>
-          <div class="ben-item">Menos insegurança diante do paciente</div>
-          <div class="ben-item">Método clínico estruturado e replicável</div>
-          <div class="ben-item">Reconhecimento como referência na área</div>
-        </div>
-
-        <div class="callout reveal">
-          <h3>Conhecimento sem método gera insegurança.<br />Método sem supervisão gera erros silenciosos.</h3>
-          <p>A Mentoria Premium em Psiquiatria une os dois elementos que você precisa: um método clínico estruturado e supervisão especializada contínua para aplicá-lo com segurança na sua prática real — até que a blindagem técnica deixe de ser um objetivo e passe a ser a sua rotina.</p>
-        </div>
-
-        <div class="cta-area reveal">
-          <p class="cta-lead">Candidate-se à Mentoria PsiqExpert</p>
-          <p class="cta-sub">As vagas são limitadas e o processo de seleção garante que todos os participantes estejam alinhados com o nível de comprometimento exigido pelo programa.</p>
-          <a href="#topo" class="btn-gold">Solicitar Informações Agora</a>
-          <p class="legal-note">Exclusivo para médicos &nbsp;·&nbsp; Vagas limitadas &nbsp;·&nbsp; Seleção por perfil</p>
-        </div>
-
-        <div class="closing reveal">
-          Os profissionais que mais evoluem não são os que mais estudam.<br />
-          São os que desenvolveram um método para transformar<br />
-          conhecimento em decisões clínicas seguras.
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ O QUE ESTÁ INCLUSO ════════════════════════ -->
-  <section class="incluso">
+  <!-- ═══ A REUNIÃO 1:1 ═════════════════════════════ -->
+  <section class="incluso" id="reuniao">
     <div class="incluso-wrap">
 
       <header class="carta-header reveal">
-        <div class="carta-kicker">Tudo que você recebe</div>
-        <h2 class="carta-h2">O que está incluído na Mentoria</h2>
+        <div class="carta-kicker">O primeiro passo</div>
+        <h2 class="carta-h2">A Reunião Estratégica 1:1</h2>
       </header>
 
-      <div class="incluso-grid">
+      <div class="carta-body">
+        <p class="reveal" style="text-align:center; max-width:620px; margin:0 auto 8px;">
+          Antes de qualquer decisão, você conversa individualmente com o Dr. Arthur Silva — uma avaliação honesta de onde você está e do que precisa mudar.
+        </p>
+      </div>
+
+      <div class="incluso-grid" style="grid-template-columns:1fr;">
+
+        <div class="incluso-card reveal d1">
+          <div class="incluso-icon">🧭</div>
+          <div class="incluso-text">
+            <h4>Avaliação do seu momento de carreira</h4>
+            <p>Sua rotina de atendimentos, os casos que mais geram insegurança e as lacunas que hoje travam a sua evolução clínica.</p>
+          </div>
+        </div>
+
+        <div class="incluso-card reveal d2">
+          <div class="incluso-icon">📈</div>
+          <div class="incluso-text">
+            <h4>Um plano para a sua prática</h4>
+            <p>Direcionamentos concretos para elevar a qualidade dos seus atendimentos em saúde mental e a assertividade das suas condutas.</p>
+          </div>
+        </div>
 
         <div class="incluso-card reveal d1">
           <div class="incluso-icon">🎯</div>
           <div class="incluso-text">
-            <h4>Supervisão Clínica</h4>
-            <p>Sessões de supervisão com o Dr. Arthur Silva para discutir seus casos reais, acompanhar a evolução dos pacientes e desenvolver seu raciocínio clínico de forma personalizada.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d2">
-          <div class="incluso-icon">📋</div>
-          <div class="incluso-text">
-            <h4>Protocolo de Raciocínio Diagnóstico</h4>
-            <p>Método estruturado e testado na prática para organizar o raciocínio diagnóstico em psiquiatria, aplicável a partir da primeira consulta.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d1">
-          <div class="incluso-icon">🛠️</div>
-          <div class="incluso-text">
-            <h4>Ferramentas Práticas</h4>
-            <p>Biblioteca virtual com resumos, algoritmos, mapas mentais e modelos de documentos, além das plataformas de apoio psicofarmacológico e de escalas e acompanhamento clínico.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d2">
-          <div class="incluso-icon">👥</div>
-          <div class="incluso-text">
-            <h4>Comunidade Exclusiva de Médicos</h4>
-            <p>Espaço privado para troca de experiências, discussão de casos e networking com profissionais comprometidos com a excelência clínica.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d1">
-          <div class="incluso-icon">📈</div>
-          <div class="incluso-text">
-            <h4>Acompanhamento de Metas e Evolução</h4>
-            <p>Definição de objetivos individualizados no início do programa e acompanhamento da sua progressão clínica até o encerramento, seja no formato de 6 ou de 12 meses.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d2">
-          <div class="incluso-icon">🤝</div>
-          <div class="incluso-text">
-            <h4>Relação com Paciente e Família</h4>
-            <p>Orientação no manejo da comunicação difícil, das expectativas familiares, da adesão ao tratamento e dos conflitos que surgem ao longo do acompanhamento.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d1">
-          <div class="incluso-icon">⚖️</div>
-          <div class="incluso-text">
-            <h4>Dilemas Ético-Jurídicos e Rede Assistencial</h4>
-            <p>Suporte à atuação do médico assistente diante de dilemas ético-jurídicos e ao direcionamento do paciente dentro da rede de saúde mental, pública e privada.</p>
-          </div>
-        </div>
-
-        <div class="incluso-card reveal d2">
-          <div class="incluso-icon">📜</div>
-          <div class="incluso-text">
-            <h4>Atestado de Atuação Prática*</h4>
-            <p>Documento que atesta a sua atuação prática ao longo do programa, com registro das competências clínicas desenvolvidas durante a mentoria.</p>
+            <h4>Clareza sobre o próximo passo</h4>
+            <p>Ao final, você entende com precisão se a Mentoria PsiqExpert é o caminho certo para o seu momento profissional.</p>
           </div>
         </div>
 
       </div>
 
-      <p class="footnote reveal" style="margin-top: 20px; text-align: center;">*Sujeito a análises individualizadas</p>
+      <div class="cta-area reveal">
+        <p class="cta-lead">Agende sua Reunião 1:1</p>
+        <p class="cta-sub">Cada reunião é conduzida pessoalmente pelo Dr. Arthur Silva — por isso, as vagas são limitadas.</p>
+        <a href="#topo" class="btn-gold">Quero Marcar Minha Reunião</a>
+        <p class="legal-note">Exclusivo para médicos &nbsp;·&nbsp; Vagas limitadas</p>
+      </div>
 
-      <div class="cta-area reveal" style="margin-top: 56px;">
-        <p class="cta-lead">Pronto para transformar sua prática clínica?</p>
-        <p class="cta-sub">Preencha o formulário no topo da página e nossa equipe entrará em contato com todas as informações sobre o processo seletivo e o investimento.</p>
-        <a href="#topo" class="btn-gold">Solicitar Informações</a>
-        <p class="legal-note">Vagas limitadas &nbsp;·&nbsp; Exclusivo para médicos &nbsp;·&nbsp; Seleção por perfil</p>
+      <div class="closing reveal">
+        Os melhores médicos não são os que nunca têm dúvidas.<br />
+        São os que desenvolveram um método para decidir com segurança<br />
+        mesmo diante das situações mais complexas.
       </div>
 
     </div>
@@ -1297,7 +926,7 @@
           Dr. Arthur Silva é Médico Psiquiatra formado pela Universidade do Estado do Pará — UEPA, com residência médica em psiquiatria na Fundação Hospital de Clínicas Gaspar Vianna (FHCGV/UEPA). Mestre em Ensino em Saúde — Educação Médica pelo Centro Universitário do Pará (CESUPA), atualmente preceptor do Programa de Residência Médica em Psiquiatria da FHCGV, com ampla experiência como docente na graduação de medicina e em programas de pós-graduação em psiquiatria. Ao longo de sua trajetória, supervisionou diversas turmas de médicos em formação e desenvolveu o método que fundamenta a Mentoria PsiqExpert — voltado à blindagem técnica do médico na prática clínica.
         </p>
         <div class="bio-cta-wrap">
-          <a href="#topo" class="btn-gold">Garantir Minha Vaga</a>
+          <a href="#topo" class="btn-gold">Quero Marcar Minha Reunião</a>
           <p class="bio-legal">Exclusivo para médicos &nbsp;·&nbsp; Vagas limitadas<br />Participação mediante avaliação de perfil</p>
         </div>
       </div>
